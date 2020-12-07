@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/pcy999/vueGulu/issues"
   },
-  "homepage": "https://github.com/pcy999/vueGulu#readme"
+  "homepage": "https://github.com/pcy999/vueGulu#readme",
+  "dependencies": {
+    "vue": "^2.6.12"
+  }
 }
