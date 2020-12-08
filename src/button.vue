@@ -26,7 +26,7 @@ export default {
       default: "left",
       //属性检查器
       validator(value) {
-        return value === "left" && value === "right";
+        return value === "left" || value === "right";
       },
     },
   },
