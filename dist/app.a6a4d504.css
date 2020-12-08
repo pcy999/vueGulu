@@ -1,3 +1,11 @@
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .g-button {
   font-size: var(--font-size);
   height: var(--button-height);
@@ -34,6 +42,9 @@
   margin-right: 0;
   margin-left: 0.1em;
   order: 2;
+}
+.g-button .loading {
+  animation: spin 2s infinite linear;
 }
 .g-icon[data-v-b8edb7] {
   width: 1em;
