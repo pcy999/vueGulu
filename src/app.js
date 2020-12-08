@@ -3,6 +3,7 @@ import Button from "./button.vue";
 import Icon from "./icon.vue";
 import ButtonGroup from "./button-group.vue";
 import { expect } from "chai";
+
 Vue.component("g-button", Button);
 Vue.component("g-icon", Icon);
 Vue.component("g-button-group", ButtonGroup);
@@ -14,6 +15,9 @@ new Vue({
 });
 
 //单元测试
+import chai from "chai";
+import spies from "chai-spies";
+chai.use(spies);
 {
   const Constructor = Vue.extend(Button);
   const button = new Constructor({
@@ -88,9 +92,9 @@ new Vue({
     },
   });
   gButton.$mount();
-  gButton.$on("click", function() {
-    console.log(1);
-  });
+  let spy = chai.spy(function() {});
+  gButton.$on("click", spy);
   let button = gButton.$el;
   button.click();
+  expect(spy).to.have.been.called();
 }
