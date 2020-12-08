@@ -64,24 +64,24 @@ export default {
   &:focus {
     outline: none;
   }
-  .icon {
+  > .icon {
     order: 1;
     margin-right: 0.1em;
   }
-  .content {
+  > .content {
     order: 2;
   }
   &.icon-right {
-    .content {
+    > .content {
       order: 1;
     }
-    .icon {
+    > .icon {
       margin-right: 0;
       margin-left: 0.1em;
       order: 2;
     }
   }
-  .loading {
+  > .loading {
     animation: spin 2s infinite linear;
   }
 }
