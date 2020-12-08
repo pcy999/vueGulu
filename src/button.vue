@@ -33,7 +33,7 @@ export default {
   methods: {},
 };
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 //帧动画
 @keyframes spin {
   0% {
@@ -43,7 +43,6 @@ export default {
     transform: rotate(360deg);
   }
 }
-
 .g-button {
   font-size: var(--font-size);
   height: var(--button-height);
@@ -56,33 +55,26 @@ export default {
   justify-content: center;
   align-items: center;
   vertical-align: middle; // 加上这个css就对齐了
-
   &:hover {
     border-color: var(--border-color-hover);
   }
-
   &:active {
     background: var(--button-active-bg);
   }
-
   &:focus {
     outline: none;
   }
-
   .icon {
     order: 1;
     margin-right: 0.1em;
   }
-
   .content {
     order: 2;
   }
-
   &.icon-right {
     .content {
       order: 1;
     }
-
     .icon {
       margin-right: 0;
       margin-left: 0.1em;
