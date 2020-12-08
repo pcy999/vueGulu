@@ -19,6 +19,7 @@ import chai from "chai";
 import spies from "chai-spies";
 chai.use(spies);
 {
+  //测试按钮含有icon
   const Constructor = Vue.extend(Button);
   const button = new Constructor({
     propsData: {
@@ -33,6 +34,7 @@ chai.use(spies);
   button.$destroy();
 }
 {
+  //测试按钮含有icon
   const Constructor = Vue.extend(Button);
   const button = new Constructor({
     propsData: {
