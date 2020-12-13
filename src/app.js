@@ -12,6 +12,7 @@ new Vue({
   el: "#app",
   data: {
     loading1: false,
+    message: "测试双向绑定",
   },
   methods: {
     inputChange(e) {

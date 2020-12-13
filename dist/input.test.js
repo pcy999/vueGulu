@@ -278,7 +278,7 @@ exports.default = _default;
     
         /* template */
         Object.assign($34b104, (function () {
-          var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wrapper",class:{ error: _vm.error }},[_c('input',{attrs:{"disabled":_vm.disabled,"readOnly":_vm.readOnly,"type":"text"},domProps:{"value":_vm.value},on:{"change":function($event){return _vm.$emit('change', $event)},"input":function($event){return _vm.$emit('input', $event)},"focus":function($event){return _vm.$emit('focus', $event)},"blur":function($event){return _vm.$emit('blur', $event)}}}),_vm._v(" "),(_vm.error)?[_c('icon',{staticClass:"icon-error",attrs:{"name":"error"}}),_vm._v(" "),_c('span',{staticClass:"error-meassage"},[_vm._v(_vm._s(_vm.error))])]:_vm._e()],2)}
+          var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wrapper",class:{ error: _vm.error }},[_c('input',{attrs:{"disabled":_vm.disabled,"readOnly":_vm.readOnly,"type":"text"},domProps:{"value":_vm.value},on:{"change":function($event){return _vm.$emit('change', $event.target.value)},"input":function($event){return _vm.$emit('input', $event.target.value)},"focus":function($event){return _vm.$emit('focus', $event.target.value)},"blur":function($event){return _vm.$emit('blur', $event.target.value)}}}),_vm._v(" "),(_vm.error)?[_c('icon',{staticClass:"icon-error",attrs:{"name":"error"}}),_vm._v(" "),_c('span',{staticClass:"error-meassage"},[_vm._v(_vm._s(_vm.error))])]:_vm._e()],2)}
 var staticRenderFns = []
 
           return {
@@ -361,14 +361,22 @@ describe("Input", function () {
       vm.$destroy();
     });
     it("支持 change/input/focus/blur 事件", function () {
-      ["change", "input", "focus", "blue"].forEach(function (eventName) {
+      ["change", "input", "focus", "blur"].forEach(function (eventName) {
         vm = new Constructor({}).$mount();
         var callback = sinon.fake();
         vm.$on(eventName, callback);
         var event = new Event(eventName);
-        var inputElement = vm.$el.querySelector(eventName);
+        Object.defineProperty(event, "target", {
+          // value: "hi",
+          value: {
+            value: "hi"
+          },
+          enumerable: true
+        });
+        var inputElement = vm.$el.querySelector("input");
         inputElement.dispatchEvent(event);
-        expect(callback).to.have.been.calledWith(event);
+        console.log(inputElement.target, "inputElement");
+        expect(callback).to.have.been.calledWith("hi");
       });
     });
   });

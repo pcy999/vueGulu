@@ -38,7 +38,8 @@
 
 <body>
 	<div id="app">
-		<g-input value='张三' readonly></g-input>
+		<g-input v-model='message'></g-input>
+		<p>{{message}}</p>
 		<g-input value='sss' disabled></g-input>
 		<g-input value='王五' error='错误信息'></g-input>
 		<g-input value='王五' @change='inputChange'></g-input>
