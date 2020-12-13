@@ -3,7 +3,11 @@
     <input
       :value="value"
       :disabled="disabled"
-      :readonly="readonly"
+      :readOnly="readOnly"
+      @change="$emit('change', $event)"
+      @input="$emit('input', $event)"
+      @focus="$emit('focus', $event)"
+      @blur="$emit('blur', $event)"
       type="text"
     />
     <template v-if="error">
@@ -26,7 +30,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    readonly: {
+    readOnly: {
       type: Boolean,
       default: false,
     },
