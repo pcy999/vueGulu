@@ -39,7 +39,6 @@ export default {
 
 <style lang="scss" scoped>
 .col {
-  width: 50%;
   @for $n from 1 through 24 {
     &.col-#{$n} {
       width: ($n / 24) * 100%;
