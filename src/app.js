@@ -11,7 +11,6 @@ Vue.component("g-button-group", ButtonGroup);
 Vue.component("g-input", Input);
 Vue.component("g-row", Row);
 Vue.component("g-col", Col);
-console.log("Col", Col);
 new Vue({
   el: "#app",
   data: {

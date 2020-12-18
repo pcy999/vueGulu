@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width,use-scalabel=no, initial-scale=1.0,">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>VueUI</title>
 	<style>* {
 			margin: 0;
@@ -29,29 +29,20 @@
 		body {
 			font-size: var(--font-size);
 		}</style>
-	<style>
-	</style>
+	<style>.demoBox {
+			height: 50px;
+			background: #999;
+			border: 1px solid red;
+		}</style>
 <link rel="stylesheet" href="/app.a6a4d504.css"></head>
 
 <body>
 	<div id="app">
-		<div>
-			<g-row gutter="20">
-				<g-col span="2">
-					<div style="border:1px solid red">re'd</div>
-				</g-col>
-				<g-col span="22">
-					<div style="border:1px solid green">green</div>
-				</g-col>
-			</g-row>
-		</div>
 		<g-row>
-			<g-col span="10" offset="4">10</g-col>
-			<g-col span="10">10</g-col>
-		</g-row>
-		<g-row>
-			<g-col span="2" offset="2">2</g-col>
-			<g-col span="18" offset="2">18</g-col>
+			<g-col :phone="{span:12}" :ipad="{span:8}" :pc="{span:4}" :narrow-pc="{span:2}" :wide-pc="{span:1}">1</g-col>
+			<g-col :phone="{span:1}">2</g-col>
+			<g-col :phone="{span:2}">4</g-col>
+			<g-col :phone="{span:9}">3</g-col>
 		</g-row>
 
 		<!-- <g-input v-model='message'></g-input> -->
