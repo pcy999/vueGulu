@@ -32,8 +32,8 @@
 		}
 	</style>
 	<style>
-		.demoBox {
-			height: 50px;
+		.demo {
+			height: 100px;
 			background: #999;
 			border: 1px solid red;
 		}
@@ -43,10 +43,25 @@
 <body>
 	<div id="app">
 		<g-row>
-			<g-col :phone="{span:12}" :ipad="{span:8}" :pc="{span:4}" :narrow-pc="{span:2}" :wide-pc="{span:1}">1</g-col>
-			<g-col :phone="{span:1}">2</g-col>
-			<g-col :phone="{span:2}">4</g-col>
-			<g-col :phone="{span:9}">3</g-col>
+			<g-col span=24 :ipad='{span:12}' :narrow-pc='{span:8}'>
+				<div class="demo"></div>
+			</g-col>
+			<g-col span=24 :ipad='{span:12}' :narrow-pc='{span:8}'>
+				<div class="demo"></div>
+			</g-col>
+			<g-col span=24 :ipad='{span:12}' :narrow-pc='{span:8}'>
+				<div class="demo"></div>
+			</g-col>
+			<g-col span=24 :ipad='{span:12}' :narrow-pc='{span:8}'>
+				<div class="demo"></div>
+			</g-col>
+			<g-col span=24 :ipad='{span:12}' :narrow-pc='{span:8}'>
+				<div class="demo"></div>
+			</g-col>
+			<g-col span=24 :ipad='{span:12}' :narrow-pc='{span:8}'>
+				<div class="demo"></div>
+			</g-col>
+
 		</g-row>
 
 		<!-- <g-input v-model='message'></g-input> -->
