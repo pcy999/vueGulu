@@ -25,10 +25,6 @@ export default {
     offset: {
       type: [Number, String],
     },
-    phone: {
-      type: Object,
-      validator,
-    },
     ipad: {
       type: Object,
       validator,
@@ -53,11 +49,10 @@ export default {
   },
   computed: {
     colClass() {
-      let { span, offset, phone, ipad, narrowPc, pc, widePc } = this;
+      let { span, offset, ipad, narrowPc, pc, widePc } = this;
       return [
         span && `col-${span}`,
         offset && `offset-${offset}`,
-        ...(phone && [`col-phone-${phone.span}`]),
         ...(ipad && [`col-iPad-${ipad.span}`]),
         ...(narrowPc && [`col-narrow-pc-${narrowPc.span}`]),
         ...(pc && [`col-pc-${pc.span}`]),
@@ -85,18 +80,6 @@ export default {
   @for $n from 1 through 24 {
     &.offset-#{$n} {
       margin-left: ($n / 24) * 100%;
-    }
-  }
-  @media (max-width: 576px) {
-    @for $n from 1 through 24 {
-      &.col-phone-#{$n} {
-        width: ($n / 24) * 100%;
-      }
-    }
-    @for $n from 1 through 24 {
-      &.offset-phone-#{$n} {
-        margin-left: ($n / 24) * 100%;
-      }
     }
   }
   @media (min-width: 577px) and (max-width: 768px) {

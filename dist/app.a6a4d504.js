@@ -13035,10 +13035,6 @@ var _default = {
     offset: {
       type: [Number, String]
     },
-    phone: {
-      type: Object,
-      validator: validator
-    },
     ipad: {
       type: Object,
       validator: validator
@@ -13065,12 +13061,11 @@ var _default = {
     colClass: function colClass() {
       var span = this.span,
           offset = this.offset,
-          phone = this.phone,
           ipad = this.ipad,
           narrowPc = this.narrowPc,
           pc = this.pc,
           widePc = this.widePc;
-      return [span && "col-".concat(span), offset && "offset-".concat(offset)].concat(_toConsumableArray(phone && ["col-phone-".concat(phone.span)]), _toConsumableArray(ipad && ["col-iPad-".concat(ipad.span)]), _toConsumableArray(narrowPc && ["col-narrow-pc-".concat(narrowPc.span)]), _toConsumableArray(pc && ["col-pc-".concat(pc.span)]), _toConsumableArray(widePc && ["col-wide-pc-".concat(widePc.span)]));
+      return [span && "col-".concat(span), offset && "offset-".concat(offset)].concat(_toConsumableArray(ipad && ["col-iPad-".concat(ipad.span)]), _toConsumableArray(narrowPc && ["col-narrow-pc-".concat(narrowPc.span)]), _toConsumableArray(pc && ["col-pc-".concat(pc.span)]), _toConsumableArray(widePc && ["col-wide-pc-".concat(widePc.span)]));
     },
     colStyle: function colStyle() {
       return {
