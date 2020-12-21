@@ -131,58 +131,13 @@ if ("production" === 'production') {
 } else {
   module.exports = require('./vue.common.dev.js');
 }
-},{"./vue.common.prod.js":"BydX"}],"kLUt":[function(require,module,exports) {
-!function (t) {
-  var e,
-      _c,
-      l,
-      o,
-      a,
-      _i,
-      n = '<svg><symbol id="ierror" viewBox="0 0 1024 1024"><path d="M512 0C229.234939 0 0 229.229714 0 512s229.229714 512 512 512 512-229.229714 512-512S794.770286 0 512 0z m0.010449 768a42.689306 42.689306 0 0 1-42.673633-42.684082 42.689306 42.689306 0 0 1 42.673633-42.668408c23.562449 0 42.652735 19.121633 42.652735 42.673633 0 23.562449-19.090286 42.678857-42.652735 42.678857z m42.652735-192a42.642286 42.642286 0 0 1-42.652735 42.642286c-23.557224 0-42.673633-19.085061-42.673633-42.642286V298.64751c0-23.562449 19.121633-42.64751 42.673633-42.64751a42.642286 42.642286 0 0 1 42.652735 42.64751v277.35249z"  ></path></symbol><symbol id="iinfo" viewBox="0 0 1024 1024"><path d="M512 14.8973037C237.44465703 14.8973037 14.8973037 237.51093741 14.8973037 512.02209388S237.44465703 1009.1026963 512 1009.1026963s497.1026963-222.54735333 497.1026963-497.08060242C1009.1026963 237.51093741 786.55534297 14.8973037 512 14.8973037z m50.72656891 773.62435616c0 9.54437177-7.73270818 17.27707995-17.27708124 17.27707995h-66.85478886a17.27707995 17.27707995 0 0 1-17.27707995-17.27707995V467.4816923c0-9.54437177 7.73270818-17.27707995 17.27707995-17.27708125h66.85478886c9.54437177 0 17.27707995 7.73270818 17.27708124 17.27708125v321.03996756zM511.58022396 378.55554242c-32.7424976 0-59.8953511-27.15285351-59.89535111-60.69071541s27.15285351-59.8953511 59.89535111-59.89535112c33.5599558 0 60.69071542 26.3353966 60.69071671 59.89535112s-27.15285351 60.69071542-60.69071671 60.69071541z"  ></path></symbol><symbol id="iloading" viewBox="0 0 1024 1024"><path d="M512 741.43201338a25.49244636 25.49244636 0 0 1 25.08456714 20.90380659l0.40787922 4.58863976v203.93956702a25.49244636 25.49244636 0 0 1-50.5770135 4.58864108L486.50755364 970.86402675v-203.93956702a25.49244636 25.49244636 0 0 1 25.49244636-25.49244635z m-143.26754602-61.8956587a25.49244636 25.49244636 0 0 1 2.90613875 32.47737615l-2.95712413 3.56894234-146.02072989 146.02073117a25.49244636 25.49244636 0 0 1-39.00344262-32.52836155l2.95712412-3.56894233 146.02072989-145.96974578a25.49244636 25.49244636 0 0 1 36.0463185 0z m337.2650604-12.6442524l3.56894233 2.95712283 152.9546756 152.95467559a25.49244636 25.49244636 0 0 1-32.52836156 39.00344262l-3.56894232-2.95712413-152.9546756-152.95467558a25.49244636 25.49244636 0 0 1 32.52836155-39.00344133zM257.07554027 486.50755364a25.49244636 25.49244636 0 0 1 4.58863976 50.5770135L257.07554027 537.49244636H53.13597325a25.49244636 25.49244636 0 0 1-4.58864108-50.5770135L53.13597325 486.50755364h203.93956702z m713.78848648 0a25.49244636 25.49244636 0 0 1 4.58864108 50.5770135L970.86402675 537.49244636h-203.93956702a25.49244636 25.49244636 0 0 1-4.58863976-50.5770135L766.92445973 486.50755364h203.93956702zM194.92495721 183.65729609l3.56894233 2.95712412 145.96974578 146.02072989a25.49244636 25.49244636 0 0 1-32.47737615 39.00344263l-3.56894234-2.95712413-146.02073117-146.02072989a25.49244636 25.49244636 0 0 1 32.52836155-39.00344262z m642.40963848-21.26070043a25.49244636 25.49244636 0 0 1 3.00810822 32.52836155l-2.95712412 3.56894233-146.02072989 145.96974578a25.49244636 25.49244636 0 0 1-39.00344263-32.47737615l2.95712413-3.56894234 146.02072989-146.02073117a25.49244636 25.49244636 0 0 1 36.0463185 0zM512 27.64352688a25.49244636 25.49244636 0 0 1 25.08456714 20.90380529L537.49244636 53.13597325v203.93956702a25.49244636 25.49244636 0 0 1-50.5770135 4.58863976L486.50755364 257.07554027V53.13597325a25.49244636 25.49244636 0 0 1 25.49244636-25.49244637z"  ></path></symbol><symbol id="ileft" viewBox="0 0 1024 1024"><path d="M260.266667 488.533333L736 10.666667c12.8-12.8 36.266667-12.8 49.066667 0 12.8 12.8 12.8 36.266667 0 49.066666L332.8 512l452.266667 452.266667c12.8 12.8 12.8 36.266667 0 49.066666-12.8 12.8-36.266667 12.8-49.066667 0L260.266667 535.466667c-6.4-6.4-10.666667-14.933333-10.666667-23.466667 0-8.533333 4.266667-17.066667 10.666667-23.466667z"  ></path></symbol><symbol id="idown" viewBox="0 0 1024 1024"><path d="M511.609097 961.619254"  ></path><path d="M511.906879 662.759609 511.906879 662.759609 129.831974 280.679587c-14.788821-14.762215-38.777165-14.762215-53.585429 0-14.788821 14.812357-14.788821 38.799678 0 53.607942l405.851425 405.805376c0.867764 1.107217 1.824555 2.190899 2.843768 3.206018 14.808264 14.788821 38.795585 14.788821 53.585429 0l408.230612-408.226518c14.807241-14.808264 14.807241-38.795585 0-53.584406-14.767332-14.785751-38.754652-14.785751-53.562916 0L511.906879 662.759609 511.906879 662.759609zM511.906879 662.759609"  ></path></symbol><symbol id="isetting" viewBox="0 0 1024 1024"><path d="M510.35 64.07C443.7 65.88 390.82 105 387.32 155l-0.1 1.43 1.25 52.38c-12.71 13.16-50.05 36.89-68 44.41l-54-29.27c-23.94-12.94-53.78-12-81.89 2.77-24.55 12.86-46.31 35.18-61.3 62.88-31.71 58.61-24.35 124 17.1 152l51 28c3.55 18.62 3.5 61.52-0.11 79.49l-51.59 31.75c-45.24 27.8-51.73 96.7-14.79 156.86s101.31 85.49 146.57 57.67l48.06-29.57c17.29 6.62 50.72 26.38 63.9 37.88l1.94 67.32c5.46 60.16 59.48 94 141.77 88.39 61.87-3.52 110.73-47.13 109.71-97.2l-1.59-58.38c12.9-11.22 43.78-30.2 60.17-37l60.76 32.91c25.52 17.09 48.85 15.93 64 11.84 33.65-9 63.44-40.82 89.23-95.77 25-52.32 10.66-113.63-32.11-136.82l-47.82-25.86c-4.43-16.1-6.94-53.91-5.58-72.45l60.35-37.12C909.82 427.83 923 399 923 366.11c0-25.4-7.85-53.26-23.94-79.41-36-58.55-99.34-84.46-145.2-58.47l-42.25 25.93c-16.7-3.34-54.49-21.2-71.07-32.44l-1.83-66.42c-0.73-27.23-16.51-52.59-43.3-69.58-23.41-14.84-53.62-22.53-85.06-21.65z m49.91 91.59c4.2 2.67 14 9.84 14.27 18.72l2.3 83.52 4.24 6.73c14.12 22.43 100.46 66.78 134.63 59.8l5-1 51-31.25c11.5-6.52 39.59 4 59.22 36s16.13 62.5 5 69.31l-75.12 46.09-3.7 7.35c-4.29 8.49-6.52 26.92-6.52 47.93 0 34 5.86 74.72 18.37 90.89l3.76 4.86 59.37 32.13c10.54 5.68 17.85 29 5 55.59-18.08 38.67-36.03 55.56-46.75 58.42-2 0.54-6.28 1.68-14.22-3.85l-78.63-42.75-7.57 0.1c-26.21 0.37-102.2 44.75-115.85 71.75l-3.29 6.54 2 74v0.34c0 12.52-18.7 30.77-51.13 32.63-25.79 1.76-69.48 0-72.23-29.59l-2.17-78.87-2.9-5.79c-13.05-25.87-92.69-72.88-121.75-71.83l-7.67 0.27-62.24 38.3c-11.15 6.85-39.9-3.7-59.63-35.76s-16.1-62.47-5-69.32l62.78-38.57 3.43-5c17.81-25.7 17.75-122.84-0.1-148.5l-3.91-5.61L190 396.32c-10.11-8.13-13.82-37.13 3-68.25 8.69-16.05 21.16-29.15 34.21-36 4.41-2.3 15.54-7.22 23.34-3L318 325.55l6.91 0.2c29.2 0.83 114.47-52.29 126-83.47l1.92-5.2-1.46-61.52C453.26 162.73 476.53 145 512 144c18.23-0.45 35.81 3.79 48.26 11.66z"  ></path><path d="M352 512c0 88.22 71.79 160 160 160s160-71.77 160-160-71.77-160-160-160-160 71.79-160 160z m240 0a80 80 0 1 1-80-80 80.07 80.07 0 0 1 80 80z"  ></path></symbol><symbol id="iright" viewBox="0 0 1024 1024"><path d="M785.066667 488.533333L309.333333 10.666667c-12.8-12.8-36.266667-12.8-49.066666 0-12.8 12.8-12.8 36.266667 0 49.066666L712.533333 512 260.266667 964.266667c-12.8 12.8-12.8 36.266667 0 49.066666 12.8 12.8 36.266667 12.8 49.066666 0l477.866667-477.866666c6.4-6.4 10.666667-14.933333 10.666667-23.466667-2.133333-8.533333-6.4-17.066667-12.8-23.466667z"  ></path></symbol><symbol id="ithumbs-up" viewBox="0 0 1024 1024"><path d="M321.163636 809.890909h-76.8c-23.272727 0-41.890909-18.618182-41.890909-41.890909V460.8c0-23.272727 18.618182-41.890909 41.890909-41.890909h76.8v390.981818z m-76.8-353.745454c-2.327273 0-6.981818 2.327273-6.981818 6.981818V768c0 2.327273 2.327273 6.981818 6.981818 6.981818h41.890909V456.145455h-41.890909zM709.818182 809.890909H349.090909V432.872727l121.018182-197.818182c6.981818-11.636364 20.945455-18.618182 34.909091-18.618181H581.818182c18.618182 0 34.909091 9.309091 46.545454 23.272727s13.963636 32.581818 9.309091 51.2l-39.563636 123.345454c0 2.327273 0 2.327273 2.327273 4.654546s2.327273 2.327273 4.654545 2.327273h151.272727c34.909091 0 65.163636 27.927273 65.163637 65.163636V698.181818c0 60.509091-51.2 111.709091-111.709091 111.709091z m-325.818182-34.909091h325.818182c41.890909 0 76.8-34.909091 76.8-76.8v-214.109091c0-16.290909-13.963636-30.254545-30.254546-30.254545H605.090909c-13.963636 0-25.6-6.981818-32.581818-16.290909-6.981818-9.309091-9.309091-23.272727-6.981818-34.909091L605.090909 279.272727c2.327273-6.981818 0-13.963636-4.654545-20.945454-4.654545-6.981818-11.636364-9.309091-18.618182-9.309091h-76.8c-2.327273 0-4.654545 0-4.654546 2.327273l-116.363636 190.836363v332.8z"  ></path></symbol><symbol id="idownload" viewBox="0 0 1024 1024"><path d="M356.245333 277.333333v42.666667H164.693333c-30.186667 0-56.128 28.8-57.941333 66.346667L106.666667 390.570667v456.192c0 38.186667 24.853333 68.352 54.72 70.442666L164.693333 917.333333h694.570667c30.186667 0 56.128-28.8 57.941333-66.346666l0.106667-4.224V390.570667c0-38.186667-24.853333-68.352-54.72-70.442667L859.306667 320h-190.933334v-42.666667h190.933334c54.890667 0 98.368 48.661333 100.629333 108.373334l0.085333 4.864v456.192c0 60.266667-42.026667 110.528-96.298666 113.130666L859.306667 960H164.714667c-54.890667 0-98.368-48.661333-100.629334-108.373333L64 846.762667V390.570667c0-60.266667 42.026667-110.528 96.298667-113.130667L164.693333 277.333333h191.530667zM544 64v557.994667l118.848-118.826667L693.013333 533.333333 544 682.346667v3.008h-3.008L512 714.368 330.986667 533.333333l30.165333-30.165333 140.181333 140.16V64h42.666667z"  ></path></symbol></svg>',
-      d = (d = document.getElementsByTagName("script"))[d.length - 1].getAttribute("data-injectcss");
-
-  if (d && !t.__iconfont__svg__cssinject__) {
-    t.__iconfont__svg__cssinject__ = !0;
-
-    try {
-      document.write("<style>.svgfont {display: inline-block;width: 1em;height: 1em;fill: currentColor;vertical-align: -0.1em;font-size:16px;}</style>");
-    } catch (t) {
-      console && console.log(t);
-    }
-  }
-
-  function s() {
-    a || (a = !0, l());
-  }
-
-  e = function e() {
-    var t, e, c, l;
-    (l = document.createElement("div")).innerHTML = n, n = null, (c = l.getElementsByTagName("svg")[0]) && (c.setAttribute("aria-hidden", "true"), c.style.position = "absolute", c.style.width = 0, c.style.height = 0, c.style.overflow = "hidden", t = c, (e = document.body).firstChild ? (l = t, (c = e.firstChild).parentNode.insertBefore(l, c)) : e.appendChild(t));
-  }, document.addEventListener ? ~["complete", "loaded", "interactive"].indexOf(document.readyState) ? setTimeout(e, 0) : (_c = function c() {
-    document.removeEventListener("DOMContentLoaded", _c, !1), e();
-  }, document.addEventListener("DOMContentLoaded", _c, !1)) : document.attachEvent && (l = e, o = t.document, a = !1, (_i = function i() {
-    try {
-      o.documentElement.doScroll("left");
-    } catch (t) {
-      return void setTimeout(_i, 50);
-    }
-
-    s();
-  })(), o.onreadystatechange = function () {
-    "complete" == o.readyState && (o.onreadystatechange = null, s());
-  });
-}(window);
-},{}],"Bqhn":[function(require,module,exports) {
+},{"./vue.common.prod.js":"BydX"}],"rWcA":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-
-require("./svg");
-
 //
 //
 //
@@ -190,195 +145,247 @@ require("./svg");
 //
 //
 var _default = {
-  name: "P-Icon",
   props: {
-    name: {}
-  }
-};
-exports.default = _default;
-        var $b8edb7 = exports.default || module.exports;
-      
-      if (typeof $b8edb7 === 'function') {
-        $b8edb7 = $b8edb7.options;
+    gutter: {
+      type: [Number, String]
+    },
+    align: {
+      type: String,
+      validator: function validator(value) {
+        return ["left", "right", "center"].includes(value);
       }
-    
-        /* template */
-        Object.assign($b8edb7, (function () {
-          var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('svg',{staticClass:"g-icon"},[_c('use',{attrs:{"xlink:href":("#i" + _vm.name)}})])}
-var staticRenderFns = []
-
-          return {
-            render: render,
-            staticRenderFns: staticRenderFns,
-            _compiled: true,
-            _scopeId: "data-v-b8edb7",
-            functional: undefined
-          };
-        })());
-      
-},{"./svg":"kLUt"}],"eGlL":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _icon = _interopRequireDefault(require("./icon.vue"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default = {
-  components: {
-    Icon: _icon.default
+    }
   },
-  name: "P-Input",
-  props: {
-    value: {
-      type: String
+  computed: {
+    rowStyle: function rowStyle() {
+      var gutter = this.gutter;
+      return {
+        marginLeft: -gutter / 2 + "px",
+        marginRight: -gutter / 2 + "px"
+      };
     },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    readOnly: {
-      type: Boolean,
-      default: false
-    },
-    error: {
-      type: String
+    rowClass: function rowClass() {
+      var align = this.align;
+      return [align && "align-".concat(align)];
     }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    this.$children.forEach(function (vm) {
+      vm.gutter = _this.gutter;
+    });
   }
 };
 exports.default = _default;
-        var $34b104 = exports.default || module.exports;
+        var $837963 = exports.default || module.exports;
       
-      if (typeof $34b104 === 'function') {
-        $34b104 = $34b104.options;
+      if (typeof $837963 === 'function') {
+        $837963 = $837963.options;
       }
     
         /* template */
-        Object.assign($34b104, (function () {
-          var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wrapper",class:{ error: _vm.error }},[_c('input',{attrs:{"disabled":_vm.disabled,"readOnly":_vm.readOnly,"type":"text"},domProps:{"value":_vm.value},on:{"change":function($event){return _vm.$emit('change', $event.target.value)},"input":function($event){return _vm.$emit('input', $event.target.value)},"focus":function($event){return _vm.$emit('focus', $event.target.value)},"blur":function($event){return _vm.$emit('blur', $event.target.value)}}}),_vm._v(" "),(_vm.error)?[_c('icon',{staticClass:"icon-error",attrs:{"name":"error"}}),_vm._v(" "),_c('span',{staticClass:"error-meassage"},[_vm._v(_vm._s(_vm.error))])]:_vm._e()],2)}
+        Object.assign($837963, (function () {
+          var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"row",class:_vm.rowClass,style:(_vm.rowStyle)},[_vm._t("default")],2)}
 var staticRenderFns = []
 
           return {
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: "data-v-34b104",
+            _scopeId: "data-v-837963",
             functional: undefined
           };
         })());
       
-},{"./icon.vue":"Bqhn"}],"spTe":[function(require,module,exports) {
+},{}],"sOCM":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+//
+//
+//
+//
+//
+//
+var validator = function validator(value) {
+  var keys = Object.keys(value);
+  var valid = true;
+  keys.forEach(function (key) {
+    if (!["span", "offset"].includes(key)) {
+      valid = false;
+    }
+  });
+  return valid;
+};
+
+var _default = {
+  name: "P-Col",
+  props: {
+    span: {
+      type: [Number, String]
+    },
+    offset: {
+      type: [Number, String]
+    },
+    ipad: {
+      type: Object,
+      validator: validator
+    },
+    narrowPc: {
+      type: Object,
+      validator: validator
+    },
+    pc: {
+      type: Object,
+      validator: validator
+    },
+    widePc: {
+      type: Object,
+      validator: validator
+    }
+  },
+  data: function data() {
+    return {
+      gutter: 0
+    };
+  },
+  methods: {
+    creatClasses: function creatClasses(obj) {
+      var str = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+
+      if (!obj) {
+        return [];
+      }
+
+      var array = [];
+
+      if (obj.span) {
+        array.push("col-".concat(str).concat(obj.span));
+      }
+
+      if (obj.offset) {
+        array.push("offset-".concat(str).concat(obj.offset));
+      }
+
+      return array;
+    }
+  },
+  computed: {
+    colClass: function colClass() {
+      var span = this.span,
+          offset = this.offset,
+          ipad = this.ipad,
+          narrowPc = this.narrowPc,
+          pc = this.pc,
+          widePc = this.widePc;
+      var creatClasses = this.creatClasses;
+      return [].concat(_toConsumableArray(creatClasses({
+        span: span,
+        offset: offset
+      })), _toConsumableArray(creatClasses(ipad, "iPad-")), _toConsumableArray(creatClasses(narrowPc, "narrow-pc-")), _toConsumableArray(creatClasses(pc, "pc-")), _toConsumableArray(creatClasses(widePc, "wide-pc-")));
+    },
+    colStyle: function colStyle() {
+      return {
+        paddingLeft: this.gutter / 2 + "px",
+        paddingRight: this.gutter / 2 + "px"
+      };
+    }
+  }
+};
+exports.default = _default;
+        var $ba3550 = exports.default || module.exports;
+      
+      if (typeof $ba3550 === 'function') {
+        $ba3550 = $ba3550.options;
+      }
+    
+        /* template */
+        Object.assign($ba3550, (function () {
+          var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"col",class:_vm.colClass,style:(_vm.colStyle)},[_vm._t("default")],2)}
+var staticRenderFns = []
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-ba3550",
+            functional: undefined
+          };
+        })());
+      
+},{}],"Tgvo":[function(require,module,exports) {
 "use strict";
 
 var _vue = _interopRequireDefault(require("vue"));
 
-var _input = _interopRequireDefault(require("../src/input.vue"));
+var _row = _interopRequireDefault(require("../src/row.vue"));
+
+var _col = _interopRequireDefault(require("../src/col.vue"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var expect = chai.expect;
 _vue.default.config.productionTip = false;
 _vue.default.config.devtools = false;
-describe("Input", function () {
-  //BDD 行为驱动测试
-  it("存在", function () {
-    expect(_input.default).to.exist;
+describe("Row", function () {
+  it("存在.", function () {
+    expect(_row.default).to.exist;
   });
-  describe("props", function () {
-    var Constructor = _vue.default.extend(_input.default);
+  it("接受 gutter 属性.", function (done) {
+    _vue.default.component("g-row", _row.default);
 
-    var vm;
-    afterEach(function () {
+    _vue.default.component("g-col", _col.default);
+
+    var div = document.createElement("div");
+    document.body.appendChild(div);
+    div.innerHTML = "\n      <g-row gutter='20'>\n        <g-col span='12'></g-col>\n        <g-col span='12'></g-col>\n      </g-row> \n    ";
+    var vm = new _vue.default({
+      el: div
+    });
+    setTimeout(function () {
+      var row = vm.$el.querySelector(".row");
+      expect(getComputedStyle(row).marginRight).to.equal("-10px");
+      expect(getComputedStyle(row).marginLeft).to.equal("-10px");
+      var cols = vm.$el.querySelectorAll(".col");
+      expect(getComputedStyle(cols[0]).paddingLeft).to.equal("10px");
+      expect(getComputedStyle(cols[1]).paddingRight).to.equal("10px");
+      done();
+      vm.$el.remove();
       vm.$destroy();
     });
-    it("接收 value", function () {
-      vm = new Constructor({
-        propsData: {
-          value: "1234"
-        }
-      }).$mount();
-      var inputElement = vm.$el.querySelector("input");
-      expect(inputElement.value).to.equal("1234");
-    });
-    it("接收 disabled", function () {
-      vm = new Constructor({
-        propsData: {
-          disabled: true
-        }
-      }).$mount();
-      var inputElement = vm.$el.querySelector("input");
-      expect(inputElement.disabled).to.equal(true);
-    });
-    it("接收 readOnly", function () {
-      vm = new Constructor({
-        propsData: {
-          readOnly: true
-        }
-      }).$mount();
-      var inputElement = vm.$el.querySelector("input");
-      expect(inputElement.readOnly).to.equal(true);
-    });
-    it("接收 error", function () {
-      vm = new Constructor({
-        propsData: {
-          error: "错误信息"
-        }
-      }).$mount();
-      var useElement = vm.$el.querySelector("use");
-      expect(useElement.getAttribute("xlink:href")).to.equal("#ierror");
-      var erroeMessage = vm.$el.querySelector(".error-meassage");
-      expect(erroeMessage.innerText).to.equal("错误信息");
-    });
   });
-  describe("事件", function () {
-    var Constructor = _vue.default.extend(_input.default);
+  it("接受 align 属性", function () {
+    var div = document.createElement("div");
+    document.body.appendChild(div);
 
-    var vm;
-    afterEach(function () {
-      vm.$destroy();
-    });
-    it("支持 change/input/focus/blur 事件", function () {
-      ["change", "input", "focus", "blur"].forEach(function (eventName) {
-        vm = new Constructor({}).$mount();
-        var callback = sinon.fake();
-        vm.$on(eventName, callback);
-        var event = new Event(eventName);
-        Object.defineProperty(event, "target", {
-          // value: "hi",
-          value: {
-            value: "hi"
-          },
-          enumerable: true
-        });
-        var inputElement = vm.$el.querySelector("input");
-        inputElement.dispatchEvent(event);
-        expect(callback).to.have.been.calledWith("hi");
-      });
-    });
+    var Constructor = _vue.default.extend(_row.default);
+
+    var vm = new Constructor({
+      propsData: {
+        align: "center"
+      }
+    }).$mount(div);
+    var element = vm.$el;
+    expect(getComputedStyle(element).justifyContent).to.equal("center");
+    vm.$destroy();
   });
 });
-},{"vue":"ApMz","../src/input.vue":"eGlL"}]},{},["spTe"], null)
-//# sourceMappingURL=/input.test.js.map
+},{"vue":"ApMz","../src/row.vue":"rWcA","../src/col.vue":"sOCM"}]},{},["Tgvo"], null)
+//# sourceMappingURL=/row.test.js.map

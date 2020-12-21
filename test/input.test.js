@@ -79,7 +79,6 @@ describe("Input", () => {
         });
         let inputElement = vm.$el.querySelector("input");
         inputElement.dispatchEvent(event);
-        console.log(inputElement.target, "inputElement");
         expect(callback).to.have.been.calledWith("hi");
       });
     });
