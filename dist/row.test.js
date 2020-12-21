@@ -384,6 +384,7 @@ describe("Row", function () {
     }).$mount(div);
     var element = vm.$el;
     expect(getComputedStyle(element).justifyContent).to.equal("center");
+    div.remove();
     vm.$destroy();
   });
 });
