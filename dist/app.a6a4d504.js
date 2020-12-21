@@ -13057,6 +13057,27 @@ var _default = {
       gutter: 0
     };
   },
+  methods: {
+    creatClasses: function creatClasses(obj) {
+      var str = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+
+      if (!obj) {
+        return [];
+      }
+
+      var array = [];
+
+      if (obj.span) {
+        array.push("col-".concat(str).concat(obj.span));
+      }
+
+      if (obj.offset) {
+        array.push("offset-".concat(str).concat(obj.offset));
+      }
+
+      return array;
+    }
+  },
   computed: {
     colClass: function colClass() {
       var span = this.span,
@@ -13065,7 +13086,11 @@ var _default = {
           narrowPc = this.narrowPc,
           pc = this.pc,
           widePc = this.widePc;
-      return [span && "col-".concat(span), offset && "offset-".concat(offset)].concat(_toConsumableArray(ipad ? ["col-iPad-".concat(ipad.span)] : []), _toConsumableArray(narrowPc ? ["col-narrow-pc-".concat(narrowPc.span)] : []), _toConsumableArray(pc ? ["col-pc-".concat(pc.span)] : []), _toConsumableArray(widePc ? ["col-wide-pc-".concat(widePc.span)] : []));
+      var creatClasses = this.creatClasses;
+      return [].concat(_toConsumableArray(creatClasses({
+        span: span,
+        offset: offset
+      })), _toConsumableArray(creatClasses(ipad, "iPad-")), _toConsumableArray(creatClasses(narrowPc, "narrow-pc-")), _toConsumableArray(creatClasses(pc, "pc-")), _toConsumableArray(creatClasses(widePc, "wide-pc-")));
     },
     colStyle: function colStyle() {
       return {
@@ -13199,7 +13224,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55984" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52668" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
