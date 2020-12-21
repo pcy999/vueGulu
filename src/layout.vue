@@ -26,7 +26,6 @@ export default {
 
 <style lang="scss" scoped>
 .layout {
-  border: 1px solid blue;
   display: flex;
   flex-grow: 1;
   flex-direction: column;

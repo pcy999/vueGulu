@@ -849,7 +849,6 @@
 }
 }
 .layout[data-v-4d5290] {
-  border: 1px solid blue;
   display: flex;
   flex-grow: 1;
   flex-direction: column;
@@ -859,4 +858,16 @@
 }
 .content[data-v-bf979d] {
   flex-grow: 1;
+}
+.side[data-v-89ce13] {
+  position: relative;
+}
+.side > button[data-v-89ce13] {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.slider-enter-active[data-v-89ce13],
+.slider-leave-active[data-v-89ce13] {
+  transition: all 0.5s;
 }
