@@ -874,7 +874,7 @@
 .toast[data-v-084424] {
   font-size: 14px;
   line-height: 1.8;
-  height: 40px;
+  min-height: 40px;
   position: fixed;
   top: 0;
   left: 50%;
@@ -885,5 +885,11 @@
   background: rgba(0, 0, 0, 0.75);
   border-radius: 4px;
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
-  padding: 0 16px;
+  padding: 0.5em 16px;
+}
+.toast .close[data-v-084424] {
+  padding-left: 16px;
+  border-left: 1px solid #666;
+  margin-left: 16px;
+  flex-shrink: 0;
 }

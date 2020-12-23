@@ -31,7 +31,16 @@ new Vue({
   },
   methods: {
     showToast() {
-      this.$toast("我是message");
+      this.$toast("<h1>我是message</h1>", {
+        // enableHtml: true,
+        autoCloseDelay: 50000,
+        closeButton: {
+          text: "知道了",
+          callback(a) {
+            console.log("hahahah");
+          },
+        },
+      });
     },
   },
 });

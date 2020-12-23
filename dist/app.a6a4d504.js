@@ -13507,9 +13507,71 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   name: "P-toast",
-  methods: {}
+  props: {
+    autoClose: {
+      type: Boolean,
+      default: true
+    },
+    autoCloseDelay: {
+      type: Number,
+      default: 5000
+    },
+    closeButton: {
+      type: Object,
+      default: function _default() {
+        return {
+          text: "关闭",
+          callback: undefined
+        };
+      }
+    },
+    enableHtml: {
+      type: Boolean,
+      default: false
+    }
+  },
+  mounted: function mounted() {
+    this.updateStyles();
+    this.execAutoClose();
+  },
+  methods: {
+    execAutoClose: function execAutoClose() {
+      var _this = this;
+
+      if (this.autoClose) {
+        setTimeout(function () {
+          _this.close();
+        }, this.autoCloseDelay);
+      }
+    },
+    updateStyles: function updateStyles() {
+      var _this2 = this;
+
+      this.$nextTick(function () {
+        _this2.$refs.closeSpan.style.height = _this2.$refs.toastWrapper.getBoundingClientRect().height + "px";
+        _this2.$refs.closeSpan.style.lineHeight = _this2.$refs.closeSpan.style.height;
+      });
+    },
+    close: function close() {
+      this.$el.remove();
+      this.$destroy();
+    },
+    closeButtonClick: function closeButtonClick() {
+      this.close();
+      if (this.closeButton && typeof this.closeButton.callback === "function") this.closeButton.callback(this);
+    }
+  }
 };
 exports.default = _default;
         var $084424 = exports.default || module.exports;
@@ -13524,7 +13586,28 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "toast" }, [_vm._t("default")], 2)
+  return _c(
+    "div",
+    { ref: "toastWrapper", staticClass: "toast" },
+    [
+      !_vm.enableHtml
+        ? _vm._t("default")
+        : _c("div", { domProps: { innerHTML: _vm._s(_vm.$slots.default) } }),
+      _vm._v(" "),
+      _vm.closeButton
+        ? _c(
+            "span",
+            {
+              ref: "closeSpan",
+              staticClass: "close",
+              on: { click: _vm.closeButtonClick }
+            },
+            [_vm._v("\n    " + _vm._s(_vm.closeButton.text) + "\n  ")]
+          )
+        : _vm._e()
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -13573,9 +13656,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var _default = {
   install: function install(Vue, options) {
-    Vue.prototype.$toast = function (message) {
+    Vue.prototype.$toast = function (message, toastOptions) {
       var Contructor = Vue.extend(_toast.default);
-      var toast = new Contructor();
+      var toast = new Contructor({
+        propsData: toastOptions
+      });
       toast.$slots.default = message;
       toast.$mount();
       document.body.appendChild(toast.$el);
@@ -13646,7 +13731,16 @@ new _vue.default({
   },
   methods: {
     showToast: function showToast() {
-      this.$toast("我是message");
+      this.$toast("<h1>我是message</h1>", {
+        // enableHtml: true,
+        autoCloseDelay: 50000,
+        closeButton: {
+          text: "知道了",
+          callback: function callback(a) {
+            console.log("hahahah");
+          }
+        }
+      });
     }
   }
 });
@@ -13678,7 +13772,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52320" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59174" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
