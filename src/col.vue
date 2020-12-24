@@ -9,7 +9,7 @@ let validator = (value) => {
   let keys = Object.keys(value);
   let valid = true;
   keys.forEach((key) => {
-    if (!["span", "offset"].includes(key)) {
+    if (!["span", "offset"].indexOf(value) >= 0) {
       valid = false;
     }
   });

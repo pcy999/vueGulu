@@ -12911,7 +12911,7 @@ var _default = {
     align: {
       type: String,
       validator: function validator(value) {
-        return ["left", "right", "center"].includes(value);
+        return ["left", "right", "center"].indexOf(value) >= 0;
       }
     }
   },
@@ -13019,7 +13019,7 @@ var validator = function validator(value) {
   var keys = Object.keys(value);
   var valid = true;
   keys.forEach(function (key) {
-    if (!["span", "offset"].includes(key)) {
+    if (!["span", "offset"].indexOf(value) >= 0) {
       valid = false;
     }
   });
@@ -13501,6 +13501,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -13539,11 +13542,23 @@ var _default = {
     enableHtml: {
       type: Boolean,
       default: false
+    },
+    position: {
+      type: String,
+      defualt: "top",
+      validator: function validator(value) {
+        return ["top", "bottom", "middle"].indexOf(value) >= 0;
+      }
     }
   },
   mounted: function mounted() {
     this.updateStyles();
     this.execAutoClose();
+  },
+  computed: {
+    toastClasses: function toastClasses() {
+      return _defineProperty({}, "position-".concat(this.position), true);
+    }
   },
   methods: {
     execAutoClose: function execAutoClose() {
@@ -13588,7 +13603,7 @@ exports.default = _default;
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { ref: "toastWrapper", staticClass: "toast" },
+    { ref: "toastWrapper", staticClass: "toast", class: _vm.toastClasses },
     [
       !_vm.enableHtml
         ? _vm._t("default")
@@ -13733,6 +13748,7 @@ new _vue.default({
     showToast: function showToast() {
       this.$toast("<h1>我是message</h1>", {
         // enableHtml: true,
+        position: "middle",
         autoCloseDelay: 50000,
         closeButton: {
           text: "知道了",
@@ -13772,7 +13788,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59174" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50129" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
