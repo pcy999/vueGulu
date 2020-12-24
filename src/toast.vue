@@ -1,15 +1,17 @@
 <template>
-  <div class="toast" ref="toastWrapper" :class="toastClasses">
-    <slot v-if="!enableHtml"></slot>
-    <div v-else v-html="$slots.default"></div>
-    <span
-      class="close"
-      v-if="closeButton"
-      @click="closeButtonClick"
-      ref="closeSpan"
-    >
-      {{ closeButton.text }}
-    </span>
+  <div class="wrapper" :class="positionClasses">
+    <div class="toast" ref="toastWrapper">
+      <slot v-if="!enableHtml"></slot>
+      <div v-else v-html="$slots.default"></div>
+      <span
+        class="close"
+        v-if="closeButton"
+        @click="closeButtonClick"
+        ref="closeSpan"
+      >
+        {{ closeButton.text }}
+      </span>
+    </div>
   </div>
 </template>
 
@@ -51,7 +53,7 @@ export default {
     this.execAutoClose();
   },
   computed: {
-    toastClasses() {
+    positionClasses() {
       return {
         [`position-${this.position}`]: true,
       };
@@ -74,6 +76,7 @@ export default {
     },
     close() {
       this.$el.remove();
+      this.$emit("close");
       this.$destroy();
     },
     closeButtonClick() {
@@ -89,34 +92,67 @@ export default {
 $font-size: 14px;
 $toast-min-height: 40px;
 $toast-bg: rgba(0, 0, 0, 0.75);
-.toast {
-  font-size: $font-size;
-  line-height: 1.8;
-  min-height: $toast-min-height;
+$animation-duration: 500ms;
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+.wrapper {
   position: fixed;
-  top: 0;
   left: 50%;
   transform: translateX(-50%);
-  color: white;
-  display: flex;
-  align-items: center;
-  background: $toast-bg;
-  border-radius: 4px;
-  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
-  padding: 0.5em 16px;
-  .close {
-    padding-left: 16px;
-    border-left: 1px solid #666;
-    margin-left: 16px;
-    flex-shrink: 0;
+  &.position-top {
+    top: 0;
+    .toast {
+      animation: slide-down $animation-duration;
+    }
   }
   &.position-bottom {
-    top: auto;
     bottom: 0;
+    .toast {
+      animation: slide-up $animation-duration;
+    }
   }
   &.position-middle {
     top: 50%;
     transform: translate(-50%, -50%);
+    .toast {
+      animation: slide-down $animation-duration;
+    }
+  }
+  .toast {
+    font-size: $font-size;
+    line-height: 1.8;
+    min-height: $toast-min-height;
+    color: white;
+    display: flex;
+    align-items: center;
+    background: $toast-bg;
+    border-radius: 4px;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+    padding: 0.5em 16px;
+    .close {
+      padding-left: 16px;
+      border-left: 1px solid #666;
+      margin-left: 16px;
+      flex-shrink: 0;
+    }
   }
 }
 </style>

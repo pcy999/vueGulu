@@ -30,10 +30,36 @@ new Vue({
     message: "测试双向绑定",
   },
   methods: {
-    showToast() {
+    top() {
+      this.$toast("<h1>我是message</h1>", {
+        // enableHtml: true,
+        position: "top",
+        autoCloseDelay: 50000,
+        closeButton: {
+          text: "知道了",
+          callback(a) {
+            console.log("hahahah");
+          },
+        },
+      });
+    },
+    middle() {
       this.$toast("<h1>我是message</h1>", {
         // enableHtml: true,
         position: "middle",
+        autoCloseDelay: 50000,
+        closeButton: {
+          text: "知道了",
+          callback(a) {
+            console.log("hahahah");
+          },
+        },
+      });
+    },
+    bottom() {
+      this.$toast("<h1>我是message</h1>", {
+        // enableHtml: true,
+        position: "bottom",
         autoCloseDelay: 50000,
         closeButton: {
           text: "知道了",
