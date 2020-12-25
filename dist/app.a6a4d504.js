@@ -13524,11 +13524,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var _default = {
   name: "P-toast",
   props: {
+    // autoClose: {
+    //   type: Boolean,
+    //   default: true,
+    // },
     autoClose: {
-      type: Boolean,
-      default: true
-    },
-    autoCloseDelay: {
       type: Number,
       default: 5000
     },
@@ -13569,7 +13569,7 @@ var _default = {
       if (this.autoClose) {
         setTimeout(function () {
           _this.close();
-        }, this.autoCloseDelay);
+        }, this.autoClose);
       }
     },
     updateStyles: function updateStyles() {
@@ -13776,7 +13776,7 @@ new _vue.default({
       this.$toast("<h1>我是message</h1>", {
         // enableHtml: true,
         position: "top",
-        autoCloseDelay: 50000,
+        autoClose: 3000,
         closeButton: {
           text: "知道了",
           callback: function callback(a) {
@@ -13841,7 +13841,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51035" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64166" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

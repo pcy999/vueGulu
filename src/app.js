@@ -34,7 +34,7 @@ new Vue({
       this.$toast("<h1>我是message</h1>", {
         // enableHtml: true,
         position: "top",
-        autoCloseDelay: 50000,
+        autoClose: 3000,
         closeButton: {
           text: "知道了",
           callback(a) {

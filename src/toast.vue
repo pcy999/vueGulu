@@ -19,11 +19,11 @@
 export default {
   name: "P-toast",
   props: {
+    // autoClose: {
+    //   type: Boolean,
+    //   default: true,
+    // },
     autoClose: {
-      type: Boolean,
-      default: true,
-    },
-    autoCloseDelay: {
       type: Number,
       default: 5000,
     },
@@ -64,7 +64,7 @@ export default {
       if (this.autoClose) {
         setTimeout(() => {
           this.close();
-        }, this.autoCloseDelay);
+        }, this.autoClose);
       }
     },
     updateStyles() {
