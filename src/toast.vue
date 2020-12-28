@@ -38,7 +38,7 @@ export default {
     },
     enableHtml: {
       type: Boolean,
-      default: false,
+      default: true,
     },
     position: {
       type: String,

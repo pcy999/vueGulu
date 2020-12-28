@@ -11,6 +11,11 @@ import Content from "./content.vue";
 import Side from "./side.vue";
 import Footer from "./footer.vue";
 import plugin from "./plugin";
+import Tabs from "./tabs.vue";
+import TabsBody from "./tabs-body.vue";
+import TabsHead from "./tabs-head.vue";
+import TabsItem from "./tabs-item.vue";
+import TabsPane from "./tabs-pane.vue";
 Vue.component("g-button", Button);
 Vue.component("g-icon", Icon);
 Vue.component("g-button-group", ButtonGroup);
@@ -22,12 +27,16 @@ Vue.component("g-header", Header);
 Vue.component("g-content", Content);
 Vue.component("g-side", Side);
 Vue.component("g-footer", Footer);
+Vue.component("g-tabs", Tabs);
+Vue.component("g-tabs-body", TabsBody);
+Vue.component("g-tabs-head", TabsHead);
+Vue.component("g-tabs-item", TabsItem);
+Vue.component("g-tabs-pane", TabsPane);
 Vue.use(plugin);
 new Vue({
   el: "#app",
   data: {
-    loading1: false,
-    message: "测试双向绑定",
+    selectedTab: "sports",
   },
   methods: {
     top() {
@@ -44,7 +53,7 @@ new Vue({
       });
     },
     middle() {
-      this.$toast("<h1>我是message</h1>", {
+      this.$toast("我是messag", {
         // enableHtml: true,
         position: "middle",
         autoCloseDelay: 50000,
