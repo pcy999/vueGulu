@@ -935,15 +935,19 @@
 }
 .tabs-head[data-v-1a673d] {
   display: flex;
+  height: 40px;
   justify-content: flex-start;
-  align-items: center;
 }
 .tabs-head > .actions[data-v-1a673d] {
   margin-left: auto;
 }
 .tabs-item[data-v-d8a248] {
+  display: flex;
   flex-shrink: 0;
   padding: 0 2em;
+  align-items: center;
+  height: 100%;
+  cursor: pointer;
 }
 .tabs-item.active[data-v-d8a248] {
   background: red;

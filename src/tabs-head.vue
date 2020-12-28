@@ -20,10 +20,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$height: 40px;
 .tabs-head {
   display: flex;
+  height: $height;
   justify-content: flex-start;
-  align-items: center;
   & > .actions {
     margin-left: auto;
   }
