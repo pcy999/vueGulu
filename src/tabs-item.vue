@@ -1,5 +1,11 @@
 <template>
-  <div class="tabs-item" v-if="isShow" @click="onClick" :class="classes">
+  <div
+    class="tabs-item"
+    v-if="isShow"
+    @click="onClick"
+    :class="classes"
+    :data-name="name"
+  >
     <slot></slot>
   </div>
 </template>
@@ -29,9 +35,10 @@ export default {
     },
   },
   created() {
-    this.eventBus.$on("update:selected", (name) => {
-      this.active = name === this.name;
-    });
+    this.eventBus &&
+      this.eventBus.$on("update:selected", (name) => {
+        this.active = name === this.name;
+      });
   },
   methods: {
     onClick() {

@@ -13756,6 +13756,10 @@ var _default = {
   mounted: function mounted() {
     var _this = this;
 
+    if (this.$children.length === 0) {
+      console && console.warn && console.warn("tabs的子组件应该是tabs-head,tabs-body,但是你没有写子组件！");
+    }
+
     this.$children.forEach(function (vm) {
       if (vm.$options.name && vm.$options.name === "P-tabs-head") {
         vm.$children.forEach(function (child) {
@@ -13991,6 +13995,12 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
+//
+//
 var _default = {
   name: "P-tabs-item",
   data: function data() {
@@ -14019,7 +14029,7 @@ var _default = {
   created: function created() {
     var _this = this;
 
-    this.eventBus.$on("update:selected", function (name) {
+    this.eventBus && this.eventBus.$on("update:selected", function (name) {
       _this.active = name === _this.name;
     });
   },
@@ -14048,6 +14058,7 @@ exports.default = _default;
         {
           staticClass: "tabs-item",
           class: _vm.classes,
+          attrs: { "data-name": _vm.name },
           on: { click: _vm.onClick }
         },
         [_vm._t("default")],

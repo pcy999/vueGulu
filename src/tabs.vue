@@ -32,6 +32,13 @@ export default {
     };
   },
   mounted() {
+    if (this.$children.length === 0) {
+      console &&
+        console.warn &&
+        console.warn(
+          "tabs的子组件应该是tabs-head,tabs-body,但是你没有写子组件！"
+        );
+    }
     this.$children.forEach((vm) => {
       if (vm.$options.name && vm.$options.name === "P-tabs-head") {
         vm.$children.forEach((child) => {
