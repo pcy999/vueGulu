@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-item" @click="xxx" :class="classes">
+  <div class="tabs-item" v-if="isShow" @click="onClick" :class="classes">
     <slot></slot>
   </div>
 </template>
@@ -13,9 +13,9 @@ export default {
     };
   },
   props: {
-    disabled: {
+    isShow: {
       type: Boolean,
-      default: false,
+      default: true,
     },
     name: {
       type: String | Number,
@@ -34,7 +34,7 @@ export default {
     });
   },
   methods: {
-    xxx() {
+    onClick() {
       this.eventBus.$emit("update:selected", this.name, this);
     },
   },

@@ -13999,9 +13999,9 @@ var _default = {
     };
   },
   props: {
-    disabled: {
+    isShow: {
       type: Boolean,
-      default: false
+      default: true
     },
     name: {
       type: String | Number,
@@ -14024,7 +14024,7 @@ var _default = {
     });
   },
   methods: {
-    xxx: function xxx() {
+    onClick: function onClick() {
       this.eventBus.$emit("update:selected", this.name, this);
     }
   }
@@ -14042,12 +14042,18 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "tabs-item", class: _vm.classes, on: { click: _vm.xxx } },
-    [_vm._t("default")],
-    2
-  )
+  return _vm.isShow
+    ? _c(
+        "div",
+        {
+          staticClass: "tabs-item",
+          class: _vm.classes,
+          on: { click: _vm.onClick }
+        },
+        [_vm._t("default")],
+        2
+      )
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -14329,7 +14335,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53689" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57905" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
