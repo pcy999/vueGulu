@@ -12,9 +12,11 @@
 export default {
   name: "P-tabs-head",
   inject: ["eventBus"],
-  created() {
-    this.eventBus.$on("update:selected", (item, name) => {
-      console.log(item, name);
+  mounted() {
+    this.eventBus.$on("update:selected", (item, vm) => {
+      let { width, height, top, left } = vm.$el.getBoundingClientRect();
+      this.$refs.line.style.width = `${width}px`;
+      this.$refs.line.style.transform = `translateX(${left}px)`;
     });
   },
 };
@@ -29,10 +31,10 @@ $height: 40px;
   height: $height;
   justify-content: flex-start;
   & > .line {
-    width: 100px;
     position: absolute;
     bottom: 0;
     border-bottom: 1px solid $blue;
+    transition: all 350ms;
   }
   & > .actions {
     margin-left: auto;

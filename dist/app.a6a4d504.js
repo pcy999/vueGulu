@@ -13904,9 +13904,18 @@ exports.default = void 0;
 var _default = {
   name: "P-tabs-head",
   inject: ["eventBus"],
-  created: function created() {
-    this.eventBus.$on("update:selected", function (item, name) {
-      console.log(item, name);
+  mounted: function mounted() {
+    var _this = this;
+
+    this.eventBus.$on("update:selected", function (item, vm) {
+      var _vm$$el$getBoundingCl = vm.$el.getBoundingClientRect(),
+          width = _vm$$el$getBoundingCl.width,
+          height = _vm$$el$getBoundingCl.height,
+          top = _vm$$el$getBoundingCl.top,
+          left = _vm$$el$getBoundingCl.left;
+
+      _this.$refs.line.style.width = "".concat(width, "px");
+      _this.$refs.line.style.transform = "translateX(".concat(left, "px)");
     });
   }
 };

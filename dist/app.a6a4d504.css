@@ -940,10 +940,10 @@
   justify-content: flex-start;
 }
 .tabs-head > .line[data-v-1a673d] {
-  width: 100px;
   position: absolute;
   bottom: 0;
   border-bottom: 1px solid blue;
+  transition: all 350ms;
 }
 .tabs-head > .actions[data-v-1a673d] {
   margin-left: auto;
