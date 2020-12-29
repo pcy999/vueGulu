@@ -32,7 +32,15 @@ export default {
     };
   },
   mounted() {
-    this.eventBus.$emit("update:selected", this.selected);
+    this.$children.forEach((vm) => {
+      if (vm.$options.name && vm.$options.name === "P-tabs-head") {
+        vm.$children.forEach((child) => {
+          if (child.name && child.name === this.selected) {
+            this.eventBus.$emit("update:selected", this.selected, child);
+          }
+        });
+      }
+    });
   },
 };
 </script>

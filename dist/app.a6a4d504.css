@@ -934,9 +934,16 @@
   flex-shrink: 0;
 }
 .tabs-head[data-v-1a673d] {
+  position: relative;
   display: flex;
   height: 40px;
   justify-content: flex-start;
+}
+.tabs-head > .line[data-v-1a673d] {
+  width: 100px;
+  position: absolute;
+  bottom: 0;
+  border-bottom: 1px solid blue;
 }
 .tabs-head > .actions[data-v-1a673d] {
   margin-left: auto;
@@ -950,7 +957,8 @@
   cursor: pointer;
 }
 .tabs-item.active[data-v-d8a248] {
-  background: red;
+  color: blue;
+  font-weight: bold;
 }
 .tabs-pane.active[data-v-b72b19] {
   background: red;

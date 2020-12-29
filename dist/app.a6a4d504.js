@@ -13754,7 +13754,17 @@ var _default = {
     };
   },
   mounted: function mounted() {
-    this.eventBus.$emit("update:selected", this.selected);
+    var _this = this;
+
+    this.$children.forEach(function (vm) {
+      if (vm.$options.name && vm.$options.name === "P-tabs-head") {
+        vm.$children.forEach(function (child) {
+          if (child.name && child.name === _this.selected) {
+            _this.eventBus.$emit("update:selected", _this.selected, child);
+          }
+        });
+      }
+    });
   }
 };
 exports.default = _default;
@@ -13890,12 +13900,13 @@ exports.default = void 0;
 //
 //
 //
+//
 var _default = {
   name: "P-tabs-head",
   inject: ["eventBus"],
   created: function created() {
-    this.eventBus.$on("update:selected", function (name) {
-      console.log(name);
+    this.eventBus.$on("update:selected", function (item, name) {
+      console.log(item, name);
     });
   }
 };
@@ -13917,6 +13928,8 @@ exports.default = _default;
     { staticClass: "tabs-head" },
     [
       _vm._t("default"),
+      _vm._v(" "),
+      _c("div", { ref: "line", staticClass: "line" }),
       _vm._v(" "),
       _c("div", { staticClass: "actions" }, [_vm._t("actions")], 2)
     ],
@@ -14003,7 +14016,7 @@ var _default = {
   },
   methods: {
     xxx: function xxx() {
-      this.eventBus.$emit("update:selected", this.name);
+      this.eventBus.$emit("update:selected", this.name, this);
     }
   }
 };
@@ -14307,7 +14320,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65223" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53689" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
