@@ -18,6 +18,16 @@ export default {
   methods: {
     xxx() {
       this.visible = !this.visible;
+      if (this.visible === true) {
+        setTimeout(() => {
+          let eventHandle = () => {
+            this.visible = false;
+            console.log('visible 变成false');
+            document.removeEventListener('click', eventHandle);
+          };
+          document.addEventListener('click', eventHandle);
+        }, 0);
+      }
     },
   },
 };

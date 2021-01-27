@@ -14221,7 +14221,21 @@ var _default = {
   },
   methods: {
     xxx: function xxx() {
+      var _this = this;
+
       this.visible = !this.visible;
+
+      if (this.visible === true) {
+        setTimeout(function () {
+          var eventHandle = function eventHandle() {
+            _this.visible = false;
+            console.log('visible 变成false');
+            document.removeEventListener('click', eventHandle);
+          };
+
+          document.addEventListener('click', eventHandle);
+        }, 0);
+      }
     }
   }
 };
@@ -14438,7 +14452,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51115" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52749" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
