@@ -8,13 +8,15 @@
     >
       <slot name="content"></slot>
     </div>
-    <slot></slot>
+    <span ref="triggerWrapper">
+      <slot></slot>
+    </span>
   </div>
 </template>
 
 <script>
 export default {
-  name: "P-popover",
+  name: 'P-popover',
   data() {
     return {
       visible: false,
@@ -29,9 +31,9 @@ export default {
           document.body.appendChild(this.$refs.contentWrapper);
           let eventHandle = () => {
             this.visible = false;
-            document.removeEventListener("click", eventHandle);
+            document.removeEventListener('click', eventHandle);
           };
-          document.addEventListener("click", eventHandle);
+          document.addEventListener('click', eventHandle);
         }, 0);
       }
     },
