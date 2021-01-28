@@ -1,6 +1,11 @@
 <template>
   <div class="popover" @click.stop="xxx">
-    <div class="content-wrapper" v-if="visible" @click.stop>
+    <div
+      ref="contentWrapper"
+      class="content-wrapper"
+      v-if="visible"
+      @click.stop
+    >
       <slot name="content"></slot>
     </div>
     <slot></slot>
@@ -9,7 +14,7 @@
 
 <script>
 export default {
-  name: 'P-popover',
+  name: "P-popover",
   data() {
     return {
       visible: false,
@@ -20,15 +25,19 @@ export default {
       this.visible = !this.visible;
       if (this.visible === true) {
         setTimeout(() => {
+          console.log(this.$refs.contentWrapper);
+          document.body.appendChild(this.$refs.contentWrapper);
           let eventHandle = () => {
             this.visible = false;
-            console.log('visible 变成false');
-            document.removeEventListener('click', eventHandle);
+            document.removeEventListener("click", eventHandle);
           };
-          document.addEventListener('click', eventHandle);
+          document.addEventListener("click", eventHandle);
         }, 0);
       }
     },
+  },
+  mounted() {
+    console.log(this.$refs);
   },
 };
 </script>
