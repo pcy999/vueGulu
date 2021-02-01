@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: "P-popover",
+  name: 'P-popover',
   data() {
     return {
       visible: false,
@@ -38,9 +38,9 @@ export default {
           this.$refs.contentWrapper.style.top = top + window.scrollY + "px";
           let eventHandle = () => {
             this.visible = false;
-            document.removeEventListener("click", eventHandle);
+            document.removeEventListener('click', eventHandle);
           };
-          document.addEventListener("click", eventHandle);
+          document.addEventListener('click', eventHandle);
         }, 0);
       }
     },
