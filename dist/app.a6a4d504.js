@@ -14217,6 +14217,8 @@ exports.default = void 0;
 //
 //
 //
+//
+//
 var _default = {
   name: "P-popover",
   data: function data() {
@@ -14232,8 +14234,16 @@ var _default = {
 
       if (this.visible === true) {
         setTimeout(function () {
-          console.log(_this.$refs.contentWrapper);
           document.body.appendChild(_this.$refs.contentWrapper);
+
+          var _this$$refs$triggerWr = _this.$refs.triggerWrapper.getBoundingClientRect(),
+              width = _this$$refs$triggerWr.width,
+              height = _this$$refs$triggerWr.height,
+              top = _this$$refs$triggerWr.top,
+              left = _this$$refs$triggerWr.left;
+
+          _this.$refs.contentWrapper.style.left = left + window.scrollX + "px";
+          _this.$refs.contentWrapper.style.top = top + window.scrollY + "px";
 
           var eventHandle = function eventHandle() {
             _this.visible = false;
@@ -14291,9 +14301,8 @@ exports.default = _default;
           )
         : _vm._e(),
       _vm._v(" "),
-      _vm._t("default")
-    ],
-    2
+      _c("span", { ref: "triggerWrapper" }, [_vm._t("default")], 2)
+    ]
   )
 }
 var staticRenderFns = []
@@ -14483,7 +14492,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58345" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50130" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
