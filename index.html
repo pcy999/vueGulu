@@ -1,76 +1,51 @@
 <!DOCTYPE html>
 <html lang="zh-Hans">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>VueUI</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
 
-      :root {
-        --button-height: 32px;
-        --font-size: 14px;
-        --button-bg: white;
-        --button-active-bg: #eee;
-        --border-radius: 4px;
-        --color: #333;
-        --border-color: #999;
-        --border-color-hover: #666;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VueUI</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-      body {
-        font-size: var(--font-size);
-      }
-    </style>
-    <style>
-      .demo {
-        min-height: 100px;
-        background: #999;
-        border: 1px solid red;
-      }
-    </style>
-  </head>
+    :root {
+      --button-height: 32px;
+      --font-size: 14px;
+      --button-bg: white;
+      --button-active-bg: #eee;
+      --border-radius: 4px;
+      --color: #333;
+      --border-color: #999;
+      --border-color-hover: #666;
+    }
 
-  <body>
-    <div id="app" style="padding: 100px;">
-      <g-popover>
-        <template slot="content">
-          <div>
-            内容1
-          </div>
-        </template>
-        <button>点我</button>
-      </g-popover>
-      <g-popover>
-        <template slot="content">
-          <div>
-            内容2
-          </div>
-        </template>
-        <button>点我</button>
-      </g-popover>
+    body {
+      font-size: var(--font-size);
+    }
+  </style>
+  <style>
+    q .demo {
+      min-height: 100px;
+      background: #999;
+      border: 1px solid red;
+    }
+  </style>
+</head>
 
-      <!-- <g-tabs :selected.sync='selectedTab'>
-			<g-tabs-head>
-				<template slot="actions">
-					<g-button>按钮</g-button>
-				</template>
-				<g-tabs-item name='woman' :is-show='false'>美女</g-tabs-item>
-				<g-tabs-item name='finance'>财经</g-tabs-item>
-				<g-tabs-item name='sports'>体育</g-tabs-item>
-			</g-tabs-head>
-			<g-tabs-body>
-				<g-tabs-pane name='woman'>美女资讯</g-tabs-pane>
-				<g-tabs-pane name='finance'> 财经资讯</g-tabs-pane>
-				<g-tabs-pane name='sports'>体育资讯</g-tabs-pane>
-			</g-tabs-body>
-		</g-tabs> -->
-    </div>
-    <div id="test"></div>
-    <script src="./src/app.js"></script>
-  </body>
+<body>
+  <div id="app" style="padding: 100px;">
+    <g-collapse>
+      <g-collapse-item title='1'>内容1</g-collapse-item>
+      <g-collapse-item title='2'>内容2</g-collapse-item>
+      <g-collapse-item title='3'>内容3</g-collapse-item>
+    </g-collapse>
+  </div>
+  <div id="test"></div>
+  <script src="./src/app.js"></script>
+</body>
+
 </html>
