@@ -41,6 +41,10 @@ Vue.component("g-collapse-item", CollapseItem);
 Vue.use(plugin);
 new Vue({
   el: "#app",
-  data: {},
+  data() {
+    return {
+      selectedTab: '1'
+    }
+  },
   methods: {},
 });
