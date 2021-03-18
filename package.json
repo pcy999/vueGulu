@@ -1,52 +1,64 @@
 {
-  "name": "pcy20201209",
-  "version": "1.0.1",
+  "name": "hello-world",
+  "version": "0.1.0",
   "description": "这是一个Vue UI框架",
-  "main": "dist/index.js",
+  "private": true,
   "scripts": {
-    "start": "npx parcel index.html",
-    "dev-test": "parcel watch test/* --no-cache & karma start",
-    "test": "parcel build test/* --no-minify && karma start --single-run",
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit",
+    "lint": "vue-cli-service lint"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pcy999/vueGulu.git"
-  },
-  "keywords": [
-    "vue",
-    "ui"
-  ],
-  "author": "pcy",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/pcy999/vueGulu/issues"
-  },
-  "homepage": "https://github.com/pcy999/vueGulu#readme",
   "dependencies": {
-    "vue": "^2.6.12",
-    "vue-hot-reload-api": "^2.3.4"
+    "core-js": "^3.6.5",
+    "vue": "^2.6.11"
   },
   "devDependencies": {
-    "@vue/component-compiler-utils": "^3.2.0",
-    "chai": "^4.2.0",
-    "chai-spies": "^1.0.0",
-    "karma": "^5.2.3",
-    "karma-chai": "^0.1.0",
-    "karma-chai-spies": "^0.1.4",
-    "karma-chrome-launcher": "^3.1.0",
-    "karma-mocha": "^2.0.1",
-    "karma-sinon-chai": "^2.0.2",
-    "mocha": "^8.2.1",
-    "parcel-bundler": "^1.12.4",
-    "sass": "^1.30.0",
-    "sinon": "^9.2.1",
-    "sinon-chai": "^3.5.0",
-    "vue-template-compiler": "^2.6.12",
-    "vuepress": "^1.8.2"
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-unit-mocha": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/test-utils": "^1.0.3",
+    "babel-eslint": "^10.1.0",
+    "chai": "^4.1.2",
+    "eslint": "^6.7.2",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-vue": "^6.2.2",
+    "node-sass": "^4.12.0",
+    "prettier": "^2.2.1",
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.6.11"
   },
-  "alias": {
-    "vue": "./node_modules/vue/dist/vue.common.js"
-  }
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended",
+      "@vue/prettier"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {},
+    "overrides": [
+      {
+        "files": [
+          "**/__tests__/*.{j,t}s?(x)",
+          "**/tests/unit/**/*.spec.{j,t}s?(x)"
+        ],
+        "env": {
+          "mocha": true
+        }
+      }
+    ]
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
 }
