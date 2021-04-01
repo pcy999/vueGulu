@@ -1,11 +1,22 @@
 <template>
   <div>
-    <p-button :icon="icon" @click="a" :loading="loading">测试</p-button>
+    <slides>
+      <slides-item>
+        <div class="box">1</div>
+      </slides-item>
+      <slides-item>
+        <div class="box">2</div>
+      </slides-item>
+      <slides-item>
+        <div class="box">3</div>
+      </slides-item>
+    </slides>
   </div>
 </template>
 
 <script>
-import button from "./components/button.vue";
+import slides from "./components/slides.vue";
+import slidesItem from "./components/slides-item";
 
 export default {
   name: "App",
@@ -16,15 +27,18 @@ export default {
     };
   },
   components: {
-    "p-button": button,
+    slides: slides,
+    "slides-item": slidesItem,
   },
-  methods: {
-    a() {
-      this.loading = !this.loading;
-    },
-  },
+  methods: {},
 };
 </script>
 
 <style lang="scss">
+.box {
+  border: 1px solid #000;
+  width: 200px;
+  height: 150px;
+  background: #ddd;
+}
 </style>
