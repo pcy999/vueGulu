@@ -1,6 +1,12 @@
 <template>
   <div>
-    <slides :selected="selected">
+    <slides
+      class="wrapper"
+      :selected.sync="selected"
+      width="300px"
+      height="200px"
+      :enableAutoPlay="false"
+    >
       <slides-item name="1">
         <div class="box">1</div>
       </slides-item>
@@ -27,14 +33,7 @@ export default {
       selected: "1",
     };
   },
-  created() {
-    setInterval(() => {
-      this.selected = Number(this.selected) + 1 + "";
-      if (Number(this.selected) > 3) {
-        this.selected = "1";
-      }
-    }, 3000);
-  },
+  created() {},
   components: {
     slides: slides,
     "slides-item": slidesItem,
@@ -44,10 +43,12 @@ export default {
 </script>
 
 <style lang="scss">
-.box {
-  border: 1px solid #000;
-  width: 200px;
-  height: 150px;
-  background: #ddd;
+.wrapper {
+  .box {
+    border: 1px solid #000;
+    width: 100%;
+    height: 150px;
+    background: #ddd;
+  }
 }
 </style>

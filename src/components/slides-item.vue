@@ -1,6 +1,6 @@
 <template>
   <transition name="slide">
-    <div class="g-slides-item" v-if="visible">
+    <div class="g-slides-item" :class="{ reverse }" v-if="visible">
       <slot></slot>
     </div>
   </transition>
@@ -12,6 +12,7 @@ export default {
   data() {
     return {
       selected: undefined,
+      reverse: false,
     };
   },
   props: {
@@ -33,6 +34,7 @@ export default {
 .g-slides-item {
 }
 .slide-leave-active {
+  width: 100%;
   position: absolute;
   top: 0;
   left: 0;
@@ -45,7 +47,16 @@ export default {
   transform: translateX(100%);
   opacity: 0;
 }
+.slide-enter.reverse {
+  transform: translateX(-100%);
+  opacity: 0;
+}
 .slide-leave-to {
   transform: translateX(-100%);
+  opacity: 0;
+}
+.slide-leave-to.reverse {
+  transform: translateX(100%);
+  opacity: 0;
 }
 </style>
