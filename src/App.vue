@@ -1,13 +1,13 @@
 <template>
   <div>
-    <slides>
-      <slides-item>
+    <slides :selected="selected">
+      <slides-item name="1">
         <div class="box">1</div>
       </slides-item>
-      <slides-item>
+      <slides-item name="2">
         <div class="box">2</div>
       </slides-item>
-      <slides-item>
+      <slides-item name="3">
         <div class="box">3</div>
       </slides-item>
     </slides>
@@ -24,7 +24,16 @@ export default {
     return {
       loading: false,
       icon: "info",
+      selected: "1",
     };
+  },
+  created() {
+    setInterval(() => {
+      this.selected = Number(this.selected) + 1 + "";
+      if (Number(this.selected) > 3) {
+        this.selected = "1";
+      }
+    }, 3000);
   },
   components: {
     slides: slides,
