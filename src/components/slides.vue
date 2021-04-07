@@ -1,10 +1,9 @@
 <template>
   <div
     class="g-slides"
-    @mouseenter="onMouseenter"
-    @mouseleave="onMouseleave"
+    @mouseenter="onMouseEnter"
+    @mouseleave="onMouseLeave"
     @touchstart="onTouchStart"
-    @touchmove="onTouchMove"
     @touchend="onTouchEnd"
   >
     <div class="g-slides-window" ref="window">
@@ -13,37 +12,62 @@
       </div>
     </div>
     <div class="g-slides-dots">
+      <span @click="onClickPrev" data-action="prev">
+        <g-icon name="left"></g-icon>
+      </span>
       <span
         v-for="n in childrenLength"
-        :key="n"
         :class="{ active: selectedIndex === n - 1 }"
+        :key="n"
+        :data-index="n - 1"
         @click="select(n - 1)"
       >
-        {{ n - 1 }}
+        {{ n }}
+      </span>
+      <span @click="onClickNext" data-action="next">
+        <g-icon name="right"></g-icon>
       </span>
     </div>
   </div>
 </template>
 
 <script>
+import GIcon from "./icon";
 export default {
-  name: "p-slider",
-  data() {
-    return {
-      childrenLength: 0,
-      lastSelectedIndex: undefined,
-      timeId: undefined,
-      startTouch: undefined,
-    };
-  },
+  components: { GIcon },
   props: {
     selected: {
       type: String,
     },
-    enableAutoPlay: {
+    autoPlay: {
       type: Boolean,
       default: true,
     },
+    autoPlayDelay: {
+      type: Number,
+      default: 3000,
+    },
+  },
+  data() {
+    return {
+      childrenLength: 0,
+      lastSelectedIndex: undefined,
+      timerId: undefined,
+      startTouch: undefined,
+    };
+  },
+  mounted() {
+    this.updateChildren();
+    if (this.autoPlay) {
+      this.playAutomatically();
+    }
+    this.childrenLength = this.items.length;
+  },
+  updated() {
+    this.updateChildren();
+  },
+  beforeDestroy() {
+    this.pause();
   },
   computed: {
     selectedIndex() {
@@ -51,69 +75,19 @@ export default {
       return index === -1 ? 0 : index;
     },
     names() {
-      return this.$children.map((vm) => vm.name);
+      return this.items.map((vm) => vm.name);
     },
-  },
-  mounted() {
-    this.updateChildren();
-    this.enableAutoPlay && this.playAutomatically();
-    this.childrenLength = this.$children.length;
-    this.lastSelectedIndex = this.selectedIndex;
-  },
-  updated() {
-    this.updateChildren();
+    items() {
+      return this.$children.filter(
+        (vm) => vm.$options.name === "GuluSlidesItem"
+      );
+    },
   },
   methods: {
-    select(index) {
-      if (index === this.names.length) {
-        index = 0;
-      }
-      if (index < 0) {
-        index = this.names.length - 1;
-      }
-      this.lastSelectedIndex = this.selectedIndex;
-      this.$emit("update:selected", this.names[index]);
-    },
-    updateChildren() {
-      let selected = this.getSelected();
-      this.$children.forEach((vm) => {
-        let reverse =
-          this.selectedIndex > this.lastSelectedIndex ? false : true;
-        if (
-          this.lastSelectedIndex === this.$children.length - 1 &&
-          this.selectedIndex === 0
-        ) {
-          reverse = false;
-        }
-        vm.reverse = reverse;
-        this.$nextTick(() => {
-          vm.selected = selected;
-        });
-      });
-    },
-    playAutomatically() {
-      if (this.timeId) {
-        return;
-      }
-      let index = this.names.indexOf(this.getSelected());
-      let run = () => {
-        // if (index === this.names.length) {
-        //   index = 0;
-        // }
-        this.select(index);
-        index++;
-        this.timeId = setTimeout(run, 3000);
-      };
-      run();
-    },
-    pause() {
-      window.clearTimeout(this.timeId);
-      this.timeId = undefined;
-    },
-    onMouseenter() {
+    onMouseEnter() {
       this.pause();
     },
-    onMouseleave() {
+    onMouseLeave() {
       this.playAutomatically();
     },
     onTouchStart(e) {
@@ -122,9 +96,6 @@ export default {
         return;
       }
       this.startTouch = e.touches[0];
-    },
-    onTouchMove() {
-      // console.log("onTouchMove");
     },
     onTouchEnd(e) {
       let endTouch = e.changedTouches[0];
@@ -135,25 +106,76 @@ export default {
       let deltaY = Math.abs(y2 - y1);
       let rate = distance / deltaY;
       if (rate > 2) {
-        console.log("在滑我");
         if (x2 > x1) {
-          if (this.selectedIndex === 0) {
-            this.select(this.selectedIndex);
-          }
           this.select(this.selectedIndex - 1);
-          console.log(this.selectedIndex);
         } else {
           this.select(this.selectedIndex + 1);
-          console.log(this.selectedIndex);
         }
       }
       this.$nextTick(() => {
         this.playAutomatically();
       });
     },
+    onClickPrev() {
+      this.select(this.selectedIndex - 1);
+    },
+    onClickNext() {
+      this.select(this.selectedIndex + 1);
+    },
+    playAutomatically() {
+      if (this.timerId) {
+        return;
+      }
+      let run = () => {
+        let index = this.names.indexOf(this.getSelected());
+        let newIndex = index + 1;
+        this.select(newIndex); // 告诉外界选中 newIndex
+        this.timerId = setTimeout(run, this.autoPlayDelay);
+      };
+      this.timerId = setTimeout(run, this.autoPlayDelay);
+    },
+    pause() {
+      window.clearTimeout(this.timerId);
+      this.timerId = undefined;
+    },
+    select(newIndex) {
+      this.lastSelectedIndex = this.selectedIndex;
+      if (newIndex === -1) {
+        newIndex = this.names.length - 1;
+      }
+      if (newIndex === this.names.length) {
+        newIndex = 0;
+      }
+      this.$emit("update:selected", this.names[newIndex]);
+    },
     getSelected() {
-      let first = this.$children[0];
+      let first = this.items[0];
       return this.selected || first.name;
+    },
+    updateChildren() {
+      let selected = this.getSelected();
+      this.items.forEach((vm) => {
+        let reverse =
+          this.selectedIndex > this.lastSelectedIndex ? false : true;
+        if (this.timerId) {
+          if (
+            this.lastSelectedIndex === this.items.length - 1 &&
+            this.selectedIndex === 0
+          ) {
+            reverse = false;
+          }
+          if (
+            this.lastSelectedIndex === 0 &&
+            this.selectedIndex === this.items.length - 1
+          ) {
+            reverse = true;
+          }
+        }
+        vm.reverse = reverse;
+        this.$nextTick(() => {
+          vm.selected = selected;
+        });
+      });
     },
   },
 };
@@ -161,34 +183,33 @@ export default {
 
 <style lang="scss" scoped>
 .g-slides {
-  &-wrapper {
-    position: relative;
-  }
   &-window {
     overflow: hidden;
   }
+  &-wrapper {
+    position: relative;
+  }
   &-dots {
-    width: 100%;
-    padding: 8px 0px;
-    display: inline-flex;
+    padding: 8px 0;
+    display: flex;
     justify-content: center;
     align-items: center;
     > span {
-      width: 16px;
-      height: 16px;
+      width: 20px;
+      height: 20px;
       display: inline-flex;
       justify-content: center;
       align-items: center;
+      background: #ddd;
       border-radius: 50%;
-      background-color: #ddd;
       margin: 0 8px;
       font-size: 12px;
       &:hover {
         cursor: pointer;
       }
       &.active {
-        background-color: black;
-        color: #fff;
+        background: black;
+        color: white;
         &:hover {
           cursor: default;
         }

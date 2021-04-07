@@ -1,32 +1,44 @@
 <template>
-  <transition name="slide">
-    <div class="g-slides-item" :class="{ reverse }" v-if="visible">
-      <slot></slot>
-    </div>
-  </transition>
+  <div>
+    <template v-if="animationEnabled">
+      <transition name="slide">
+        <div class="g-slides-item" v-if="visible" :class="{ reverse }">
+          <slot></slot>
+        </div>
+      </transition>
+    </template>
+    <template v-else>
+      <div class="g-slides-item" v-if="visible" :class="{ reverse }">
+        <slot></slot>
+      </div>
+    </template>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "p-slides-item",
-  data() {
-    return {
-      selected: undefined,
-      reverse: false,
-    };
-  },
+  name: "GuluSlidesItem",
   props: {
     name: {
       type: String,
       required: true,
     },
   },
+  data() {
+    return {
+      selected: undefined,
+      reverse: false,
+      animationEnabled: false,
+    };
+  },
+  updated() {
+    this.animationEnabled = true;
+  },
   computed: {
     visible() {
-      return this.selected == this.name;
+      return this.selected === this.name;
     },
   },
-  mounted() {},
 };
 </script>
 
@@ -34,14 +46,15 @@ export default {
 .g-slides-item {
 }
 .slide-leave-active {
-  width: 100%;
   position: absolute;
-  top: 0;
   left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
 }
 .slide-enter-active,
 .slide-leave-active {
-  transition: all 1s;
+  transition: all 0.5s;
 }
 .slide-enter {
   transform: translateX(100%);
