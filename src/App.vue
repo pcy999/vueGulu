@@ -5,7 +5,6 @@
       :selected.sync="selected"
       width="300px"
       height="200px"
-      :enableAutoPlay="false"
     >
       <slides-item name="1">
         <div class="box">1</div>
@@ -45,10 +44,13 @@ export default {
 <style lang="scss">
 .wrapper {
   .box {
-    border: 1px solid #000;
     width: 100%;
     height: 150px;
     background: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
   }
 }
 </style>
