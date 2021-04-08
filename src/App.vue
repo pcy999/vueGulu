@@ -1,56 +1,32 @@
 <template>
   <div>
-    <slides
-      class="wrapper"
-      :selected.sync="selected"
-      width="300px"
-      height="200px"
-    >
-      <slides-item name="1">
-        <div class="box">1</div>
-      </slides-item>
-      <slides-item name="2">
-        <div class="box">2</div>
-      </slides-item>
-      <slides-item name="3">
-        <div class="box">3</div>
-      </slides-item>
-    </slides>
+    <g-nav :selected="selected" :multiple="false">
+      <g-nav-item name="home">首页</g-nav-item>
+      <g-nav-item name="about">关于</g-nav-item>
+      <g-nav-item name="hire">招聘</g-nav-item>
+    </g-nav>
   </div>
 </template>
 
 <script>
-import slides from "./components/slides/slides";
-import slidesItem from "./components/slides/slides-item";
+import GNav from "./components/nav/nav";
+import GSubNav from "./components/nav/sub-nav";
+import GNavItem from "./components/nav/nav-item";
 
 export default {
   name: "App",
+  components: {
+    GNav,
+    GSubNav,
+    GNavItem,
+  },
   data() {
     return {
-      loading: false,
-      icon: "info",
-      selected: "1",
+      selected: ["home"],
     };
   },
-  created() {},
-  components: {
-    slides: slides,
-    "slides-item": slidesItem,
-  },
-  methods: {},
 };
 </script>
 
 <style lang="scss">
-.wrapper {
-  .box {
-    width: 100%;
-    height: 150px;
-    background: #ddd;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-  }
-}
 </style>
