@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import slides from "./components/slides.vue";
-import slidesItem from "./components/slides-item";
+import slides from "./components/slides/slides";
+import slidesItem from "./components/slides/slides-item";
 
 export default {
   name: "App",
