@@ -1,5 +1,5 @@
 <template>
-  <div class="g-nav">
+  <div class="g-nav" :class="{ vertical }">
     <slot></slot>
   </div>
 </template>
@@ -7,28 +7,53 @@
 <script>
 export default {
   name: "p-nav",
+  provide() {
+    return {
+      root: this,
+      vertical: this.vertical,
+    };
+  },
   props: {
     selected: {
-      type: Array,
-      default: () => [],
+      type: String,
     },
-    multiple: {
+    vertical: {
       type: Boolean,
       default: false,
     },
   },
-  mounted() {
-    this.items.forEach((element) => {
-      if (this.selected.indexOf(element.name) > -1) {
-        element.selected = true;
-      } else {
-        element.selected = false;
-      }
-    });
+  data() {
+    return {
+      items: [],
+      namePath: [],
+    };
   },
-  computed: {
-    items() {
-      return this.$children.filter((vm) => vm.$options.name === "p-nav-item");
+  mounted() {
+    this.updateChildren();
+    this.listenToChildren();
+  },
+  updated() {
+    this.updateChildren();
+  },
+  methods: {
+    addItem(vm) {
+      this.items.push(vm);
+    },
+    updateChildren() {
+      this.items.forEach((vm) => {
+        if (this.selected === vm.name) {
+          vm.selected = true;
+        } else {
+          vm.selected = false;
+        }
+      });
+    },
+    listenToChildren() {
+      this.items.forEach((vm) => {
+        vm.$on("update:selected", (name) => {
+          this.$emit("update:selected", name);
+        });
+      });
     },
   },
 };
