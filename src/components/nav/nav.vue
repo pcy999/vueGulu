@@ -60,7 +60,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../../../styles/_var.scss";
 .g-nav {
   display: flex;
+  border-bottom: 1px solid $grey;
+  color: $color;
+  cursor: default;
+  user-select: none;
+  &.vertical {
+    flex-direction: column;
+    border: 1px solid $grey;
+  }
 }
 </style>
