@@ -66,6 +66,10 @@ export default {
     leave: function (el, done) {
       let { height } = el.getBoundingClientRect();
       el.style.height = `${height}px`;
+      /* 一直赋值2次，
+      浏览器会优化，
+      直接选择最后一次的数值，
+      故增加一步看起来无意义的操作 */
       el.getBoundingClientRect();
       el.style.height = 0;
       el.addEventListener("transitionend", () => {
