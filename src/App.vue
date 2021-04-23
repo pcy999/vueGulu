@@ -6,7 +6,7 @@
         :dataSource="dataSource"
         bordered
         :striped="false"
-        @changeItem="x"
+        :selected-items.sync="selected"
       ></g-table>
     </div>
     <div style="margin: 20px">
@@ -35,6 +35,7 @@ export default {
   data() {
     return {
       currentPage: 1,
+      selected: [],
       columns: [
         { text: "姓名", field: "name" },
         { text: "分数", field: "score" },
@@ -51,11 +52,7 @@ export default {
       ],
     };
   },
-  methods: {
-    x(object) {
-      console.log(`object`, object);
-    },
-  },
+  methods: {},
 };
 </script>
 

@@ -3,7 +3,7 @@
     <table class="gulu-table" :class="{ bordered, compact, striped }">
       <thead>
         <tr>
-          <th><input type="checkbox" /></th>
+          <th><input type="checkbox" @change="onChangeAllItems" /></th>
           <th v-if="numberVisible">#</th>
           <th v-for="(column, index) in columns" :key="index">
             {{ column.text }}
@@ -16,6 +16,7 @@
             <input
               type="checkbox"
               @change="onChangeItem(item, index, $event)"
+              :checked="inSelectedItems(item)"
             />
           </td>
           <td v-if="numberVisible">{{ index + 1 }}</td>
@@ -35,6 +36,13 @@ export default {
     striped: {
       type: Boolean,
       default: true,
+    },
+    selectedItems: {
+      type: Array,
+      default: () => [],
+      validator(array) {
+        return !(array.filter((item) => item.id === undefined).length > 0);
+      },
     },
     compact: {
       type: Boolean,
@@ -59,7 +67,22 @@ export default {
   },
   methods: {
     onChangeItem(item, index, e) {
-      this.$emit("changeItem", { selected: e.target.checked, item, index });
+      let copy = JSON.parse(JSON.stringify(this.selectedItems));
+      if (e.target.checked) {
+        copy.push(item);
+      } else {
+        copy = copy.filter((i) => i.id !== item.id);
+      }
+      this.$emit("update:selectedItems", copy);
+    },
+    onChangeAllItems(e) {
+      this.$emit(
+        "update:selectedItems",
+        e.target.checked ? this.dataSource : []
+      );
+    },
+    inSelectedItems(item) {
+      return this.selectedItems.some((i) => i.id === item.id);
     },
   },
 };
