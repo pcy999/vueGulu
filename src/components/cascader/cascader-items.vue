@@ -5,7 +5,7 @@
         class="label"
         v-for="(item, index) in items"
         @click="onClickLabel(item)"
-        :key="index"
+        :key="item.field"
       >
         <span class="name">{{ item.name }}</span>
         <span class="icons">

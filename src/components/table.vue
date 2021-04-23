@@ -3,15 +3,22 @@
     <table class="gulu-table" :class="{ bordered, compact, striped }">
       <thead>
         <tr>
-          <th><input type="checkbox" @change="onChangeAllItems" /></th>
+          <th>
+            <input
+              type="checkbox"
+              @change="onChangeAllItems"
+              ref="allChecked"
+              :checked="areAllItemsSelected"
+            />
+          </th>
           <th v-if="numberVisible">#</th>
-          <th v-for="(column, index) in columns" :key="index">
+          <th v-for="column in columns" :key="column.field">
             {{ column.text }}
           </th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in dataSource" :key="index">
+        <tr v-for="(item, index) in dataSource" :key="item.id">
           <td>
             <input
               type="checkbox"
@@ -20,8 +27,8 @@
             />
           </td>
           <td v-if="numberVisible">{{ index + 1 }}</td>
-          <template v-for="(column, index) in columns">
-            <td :key="index">{{ item[column.field] }}</td>
+          <template v-for="column in columns">
+            <td :key="column.field">{{ item[column.field] }}</td>
           </template>
         </tr>
       </tbody>
@@ -63,6 +70,33 @@ export default {
     bordered: {
       type: Boolean,
       default: false,
+    },
+  },
+  computed: {
+    areAllItemsSelected() {
+      const a = this.dataSource.map((item) => item.id).sort();
+      const b = this.selectedItems.map((item) => item.id).sort();
+      if (a.length !== b.length) {
+        return false;
+      }
+      let equal = true;
+      for (let i = 0; i < a.length; i++)
+        if (a[i] !== b[i]) {
+          equal = false;
+          break;
+        }
+      return equal;
+    },
+  },
+  watch: {
+    selectedItems() {
+      if (this.selectedItems.length === this.dataSource.length) {
+        this.$refs.allChecked.indeterminate = false;
+      } else if (this.selectedItems.length === 0) {
+        this.$refs.allChecked.indeterminate = false;
+      } else {
+        this.$refs.allChecked.indeterminate = true;
+      }
     },
   },
   methods: {
