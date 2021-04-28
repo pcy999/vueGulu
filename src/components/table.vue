@@ -13,7 +13,13 @@
           </th>
           <th v-if="numberVisible">#</th>
           <th v-for="column in columns" :key="column.field">
-            {{ column.text }}
+            <div class="gulu-table-header">
+              {{ column.text }}
+              <span class="gulu-table-sorter">
+                <g-icon name="up"></g-icon>
+                <g-icon name="down2"></g-icon>
+              </span>
+            </div>
           </th>
         </tr>
       </thead>
@@ -37,9 +43,15 @@
 </template>
 
 <script>
+import GIcon from "../components/icon";
 export default {
   name: "p-table",
+  components: { GIcon },
   props: {
+    orderBy: {
+      type: Object,
+      default: () => ({}),
+    },
     striped: {
       type: Boolean,
       default: true,
@@ -159,6 +171,32 @@ $grey: darken($grey, 10%);
           background: lighten($grey, 10%);
         }
       }
+    }
+  }
+  &-header {
+    display: flex;
+    align-items: center;
+  }
+  &-sorter {
+    display: inline-flex;
+    flex-direction: column;
+    margin: 0 4px;
+    cursor: pointer;
+    svg {
+      width: 10px;
+      height: 10px;
+      fill: $grey;
+    }
+    &.active {
+      fill: red;
+    }
+    &:first-child {
+      position: relative;
+      bottom: -1px;
+    }
+    &:nth-child(2) {
+      position: relative;
+      top: -1px;
     }
   }
 }

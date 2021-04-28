@@ -40,6 +40,10 @@ export default {
         { text: "姓名", field: "name" },
         { text: "分数", field: "score" },
       ],
+      orderBy: {
+        name: "asc",
+        score: "desc",
+      },
       dataSource: [
         { id: 1, name: "pcy", score: 100 },
         { id: 2, name: "yy", score: 98 },
