@@ -7,6 +7,7 @@
         bordered
         :striped="false"
         :selected-items.sync="selected"
+        :order-by="orderBy"
       ></g-table>
     </div>
     <div style="margin: 20px">
