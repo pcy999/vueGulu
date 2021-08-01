@@ -1,65 +1,30 @@
 <template>
   <div>
-    <div style="margin: 20px">
-      <g-table
-        :columns="columns"
-        :dataSource="dataSource"
-        bordered
-        :striped="false"
-        :selected-items.sync="selected"
-        :order-by="orderBy"
-      ></g-table>
-    </div>
-    <div style="margin: 20px">
-      <g-table
-        :columns="columns"
-        :dataSource="dataSource"
-        bordered
-        compact
-      ></g-table>
-    </div>
-    <div style="margin: 20px">
-      <g-paper :total-page="10" :current-page.sync="currentPage"></g-paper>
-    </div>
+    <g-sticky><div style="border: 1px solid red">sticky内容</div></g-sticky>
+    <p>段落1</p>
+    <p>段落2</p>
+    <p>段落3</p>
+    <p>段落4</p>
+    <p>段落5</p>
+    <p>段落6</p>
+    <p>段落7</p>
+    <p>段落8</p>
+    <p>段落9</p>
   </div>
 </template>
 
 <script>
-import GTable from "./components/table";
-import GPaper from "./components/paper";
+import GSticky from './components/sticky.vue';
 export default {
-  name: "App",
+  name: 'App',
   components: {
-    GTable,
-    GPaper,
+    GSticky,
   },
   data() {
-    return {
-      currentPage: 1,
-      selected: [],
-      columns: [
-        { text: "姓名", field: "name" },
-        { text: "分数", field: "score" },
-      ],
-      orderBy: {
-        name: "asc",
-        score: "desc",
-      },
-      dataSource: [
-        { id: 1, name: "pcy", score: 100 },
-        { id: 2, name: "yy", score: 98 },
-        { id: 3, name: "hh", score: 97 },
-        { id: 4, name: "qq", score: 96 },
-        { id: 5, name: "ww", score: 95 },
-        { id: 6, name: "ee", score: 94 },
-        { id: 7, name: "rr", score: 93 },
-        { id: 8, name: "gg", score: 90 },
-      ],
-    };
+    return {};
   },
   methods: {},
 };
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>
