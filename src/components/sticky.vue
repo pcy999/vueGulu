@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'p-sticky',
+  name: "p-sticky",
   props: {
     distance: { type: Number },
   },
@@ -30,23 +30,24 @@ export default {
   created() {},
   mounted() {
     let top = this.top();
-    window.addEventListener('scroll', () => {
+    this.windowScrollHandler = () => {
       if (window.scrollY > top) {
-        console.log('滚过了元素顶部');
-        let {
-          height,
-          width,
-          left,
-        } = this.$refs.wrapper.getBoundingClientRect();
-        this.height = height + 'px';
-        this.width = width + 'px';
-        this.left = left + 'px';
+        console.log("滚过了元素顶部");
+        let { height, width, left } =
+          this.$refs.wrapper.getBoundingClientRect();
+        this.height = height + "px";
+        this.width = width + "px";
+        this.left = left + "px";
         this.sticky = true;
       } else {
-        console.log('没有滚过');
+        console.log("没有滚过");
         this.sticky = false;
       }
-    });
+    };
+    window.addEventListener("scroll", this.windowScrollHandler);
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll".this.windowScrollHandler);
   },
   methods: {
     //获取wrapper距离文档顶部的高度
