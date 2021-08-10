@@ -1,6 +1,6 @@
 <template>
   <div class="gulu-sticky-wrapper" ref="wrapper" :style="{ height }">
-    <div class="gulu-sticky" :class="classes" :style="{ left, width }">
+    <div class="gulu-sticky" :class="classes" :style="{ left, width, top }">
       <slot></slot>
     </div>
   </div>
@@ -8,9 +8,12 @@
 
 <script>
 export default {
-  name: "p-sticky",
+  name: "GuluSticky",
   props: {
-    distance: { type: Number },
+    distance: {
+      type: Number,
+      default: 0,
+    },
   },
   data() {
     return {
@@ -18,7 +21,18 @@ export default {
       left: undefined,
       width: undefined,
       height: undefined,
+      top: undefined,
     };
+  },
+  mounted() {
+    this.windowScrollHandler = this._windowScrollHandler.bind(this);
+    window.addEventListener("scroll", this.windowScrollHandler);
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.windowScrollHandler);
+  },
+  created() {
+    this.timerId = null;
   },
   computed: {
     classes() {
@@ -27,43 +41,37 @@ export default {
       };
     },
   },
-  created() {},
-  mounted() {
-    let top = this.top();
-    this.windowScrollHandler = () => {
-      if (window.scrollY > top) {
-        console.log("滚过了元素顶部");
-        let { height, width, left } =
+  methods: {
+    offsetTop() {
+      let { top } = this.$refs.wrapper.getBoundingClientRect();
+      return { top: top + window.scrollY };
+    },
+    _windowScrollHandler() {
+      let { top } = this.offsetTop();
+      if (window.scrollY > top - this.distance) {
+        let { height, left, width } =
           this.$refs.wrapper.getBoundingClientRect();
         this.height = height + "px";
-        this.width = width + "px";
         this.left = left + "px";
+        this.width = width + "px";
+        this.top = this.distance + "px";
         this.sticky = true;
       } else {
-        console.log("没有滚过");
+        this.height = undefined;
+        this.left = undefined;
+        this.width = undefined;
+        this.top = undefined;
         this.sticky = false;
       }
-    };
-    window.addEventListener("scroll", this.windowScrollHandler);
-  },
-  beforeDestroy() {
-    window.removeEventListener("scroll".this.windowScrollHandler);
-  },
-  methods: {
-    //获取wrapper距离文档顶部的高度
-    top() {
-      let { top } = this.$refs.wrapper.getBoundingClientRect();
-      return top + window.scrollY;
     },
   },
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .gulu-sticky {
   &.sticky {
     position: fixed;
-    top: 0;
   }
 }
 </style>
