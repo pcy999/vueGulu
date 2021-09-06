@@ -1,24 +1,15 @@
 <template>
-  <div>
-    <g-sticky><div style="border: 1px solid red">sticky内容</div></g-sticky>
-    <p>段落1</p>
-    <p>段落2</p>
-    <p>段落3</p>
-    <p>段落4</p>
-    <p>段落5</p>
-    <p>段落6</p>
-    <p>段落7</p>
-    <p>段落8</p>
-    <p>段落9</p>
+  <div style="padding: 100px">
+    <date-picker />
   </div>
 </template>
 
 <script>
-import GSticky from './components/sticky.vue';
+import datePicker from "./components/date-picker/date-picker.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    GSticky,
+    datePicker,
   },
   data() {
     return {};
