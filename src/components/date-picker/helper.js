@@ -9,7 +9,7 @@ export default {
   },
   range(begin, end) {
     let array = [];
-    for (let i = begin - 1; i < end; i++) {
+    for (let i = begin; i <= end; i++) {
       array.push(i);
     }
     return array;

@@ -20,14 +20,25 @@
               月
             </div>
             <div v-else class="gulu-date-picker-content">
-              <div v-for="i in helper.range(1, 6)" :key="i">
-                <span v-for="j in helper.range(1, 7)" :key="j">
+              <div :class="pre('weekdays')">
+                <span v-for="i in helper.range(0, 6)" :key="i">
+                  <template>{{ weekdays[i] }}</template>
+                </span>
+              </div>
+              <div :class="pre('row')" v-for="i in helper.range(0, 5)" :key="i">
+                <span
+                  :class="pre('col')"
+                  v-for="j in helper.range(0, 6)"
+                  :key="j"
+                >
                   {{ visibleDays[i * 7 + j].getDate() }}
                 </span>
               </div>
             </div>
           </div>
-          <div class="gulu-date-picker-actions"></div>
+          <div class="gulu-date-picker-actions">
+            <g-button>清除</g-button>
+          </div>
         </div>
       </template>
     </g-popover>
@@ -38,17 +49,19 @@
 import GInput from "../input.vue";
 import GIcon from "../icon.vue";
 import GPopover from "../popover.vue";
+import GButton from "../button/button.vue";
 import ClickOutside from "../click-outside";
 import helper from "./helper";
 export default {
   name: "GDateInput",
-  components: { GInput, GIcon, GPopover },
+  components: { GButton, GInput, GIcon, GPopover },
   directives: { ClickOutside },
   data() {
     return {
       mode: "days",
       value: new Date(),
       helper,
+      weekdays: ["一", "二", "三", "四", "五", "六", "日"],
     };
   },
   computed: {
@@ -77,6 +90,9 @@ export default {
   },
   mounted() {},
   methods: {
+    pre(className) {
+      return "gulu-date-picker-" + className;
+    },
     onFocusInput() {
       this.popVisible = true;
     },

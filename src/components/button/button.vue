@@ -12,7 +12,7 @@
   </button>
 </template>
 <script>
-import Icon from "./icon";
+import Icon from "../icon.vue";
 export default {
   // props: ['icon', 'iconPosition', //left,right
   // ],
